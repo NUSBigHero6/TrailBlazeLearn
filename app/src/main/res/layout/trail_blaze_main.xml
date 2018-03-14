@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,14 +7,24 @@
     tools:context="org.nus.trailblaze.TrailBlazeMainActivity"
     android:background="@color/white">
 
-    <Button
-        android:text="Save"
-        android:background="@drawable/button_style"
-        android:textColor="@color/white"
-        android:textStyle="bold"
-        android:layout_marginTop="60dp"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <Button
+            android:text="Login with Facebook"
+            android:background="@drawable/button_style"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <Button
+            android:text="login with Google"
+            android:background="@drawable/button_style"
+            android:textColor="@color/white"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
 
-</LinearLayout>
+</RelativeLayout>
