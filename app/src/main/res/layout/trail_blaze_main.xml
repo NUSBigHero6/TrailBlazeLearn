@@ -12,18 +12,18 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
         <Button
-            android:text="Login with Facebook"
-            android:background="@drawable/button_style"
+            android:drawableTop="@drawable/facebook"
+            android:background="@drawable/button_facebook"
             android:layout_marginTop="10dp"
             android:textColor="@color/white"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <Button
-            android:text="login with Google"
-            android:background="@drawable/button_style"
+            android:drawableTop="@drawable/google"
+            android:background="@drawable/button_google"
             android:textColor="@color/white"
             android:layout_marginTop="10dp"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
     </LinearLayout>
 
