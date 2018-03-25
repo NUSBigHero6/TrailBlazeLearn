@@ -27,7 +27,7 @@ public class RoleToggler extends Activity {
     }
 
     protected void onTrainer(View view){
-        Intent trainerIntent = new Intent(this, RoleToggler.trainerView);
+        Intent trainerIntent = new Intent(this, TrailMapActivity.class);
         trainerIntent.putExtra("trainer", Trainer.fromUser(this.user));
         startActivity(trainerIntent);
     }
