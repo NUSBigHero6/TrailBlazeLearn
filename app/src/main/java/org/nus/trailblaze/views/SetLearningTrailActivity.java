@@ -15,14 +15,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import org.nus.trailblaze.R;
+import org.nus.trailblaze.dao.LearningTrailDao;
+import org.nus.trailblaze.models.LearningTrail;
+import org.nus.trailblaze.models.Trainer;
 
 /**
  * Created by priyanka on 15/3/2018.
@@ -41,8 +42,8 @@ public class SetLearningTrailActivity extends AppCompatActivity implements View.
     public final static String NAMEVALUE = "org.nus.trailblaze.nameID";
     private String documentID;
     private String nameValue;
-
-    Map<String, Object> trailDataMap = new HashMap<>();
+    private LearningTrail learningTrail;
+    private String trailName;
 
     FirebaseFirestore db = FirebaseFirestore.getInstance();
 
@@ -81,16 +82,15 @@ public class SetLearningTrailActivity extends AppCompatActivity implements View.
 
             @Override
             public void onTextChanged(CharSequence s, int start, int count, int after) {
-                String onTextChanged = et.getText().toString();
-                onTextChanged = ymd + "-" + onTextChanged;
-                titlecode.setText(onTextChanged);
-                trailcode = titlecode.getText().toString();
-                trailDataMap.put(NAME, trailcode);
+                trailName = et.getText().toString();
+                trailName = ymd + "-" + trailName;
+                titlecode.setText(trailName);
+
             }
 
             @Override
             public void afterTextChanged(Editable s) {
-
+                trailcode = titlecode.getText().toString();
             }
         });
     }
@@ -103,7 +103,12 @@ public class SetLearningTrailActivity extends AppCompatActivity implements View.
                     Toast.LENGTH_SHORT).show();
         }
         else if (documentID == null) {
-            db.collection(COLLECTION).document().set(trailDataMap)
+
+            learningTrail = new LearningTrail("ID1", new Date(), this.trailcode, null);
+//            LearningTrailDao learningTrailDao = new LearningTrailDao(SetLearningTrailActivity.this, learningTrail);
+//            learningTrailDao.SaveLearningTrail();
+
+            db.collection(COLLECTION).document().set(learningTrail)
 
                     .addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override

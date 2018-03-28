@@ -10,6 +10,15 @@ public class LearningTrail {
     private Trainer trainer;
     private List<String> trailStations;
 
+    public LearningTrail() {}
+
+    public LearningTrail(String id, Date trailDate, String name, Trainer trainer) {
+        this.id = id;
+        this.trailDate = trailDate;
+        this.name = name;
+        this.trainer = trainer;
+    }
+
     public String getId() {
         return id;
     }

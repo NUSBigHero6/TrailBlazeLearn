@@ -1,5 +1,12 @@
 package org.nus.trailblaze.dao;
 
+import android.content.Context;
+import android.support.annotation.NonNull;
+import android.util.Log;
+import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -7,6 +14,8 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 import org.nus.trailblaze.models.LearningTrail;
 import org.nus.trailblaze.models.Trainer;
+import org.nus.trailblaze.views.LearningTrailMainActivity;
+import org.nus.trailblaze.views.SetLearningTrailActivity;
 
 /**
  * Created by plasmashadow on 3/24/18.
@@ -16,15 +25,41 @@ public class LearningTrailDao {
 
     private static final String TRAIL_COLLECTION = "trails";
     private CollectionReference ref;
+    private FirebaseFirestore db;
+    private Context current;
+    private LearningTrail learningTrail;
 
     public LearningTrailDao(CollectionReference ref){
         this.ref = ref;
     }
 
-    public LearningTrailDao(){
+    public LearningTrailDao(Context current, LearningTrail learningTrail){
         this.ref = FirebaseFirestore.getInstance().collection(LearningTrailDao.TRAIL_COLLECTION);
+        this.db= FirebaseFirestore.getInstance();
+        this.current=current;
+        this.learningTrail = learningTrail;
     }
 
+    public void SaveLearningTrail(){
+
+        db.collection(TRAIL_COLLECTION).document().set(learningTrail)
+
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Toast.makeText(current, "Learning Trail Saved",
+                                Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(current, "ERROR" + e.toString(),
+                                Toast.LENGTH_SHORT).show();
+                        Log.d("TAG", e.toString());
+                    }
+                });
+    }
 
     public Task<QuerySnapshot> getTrailById(String trail){
         return  this.ref.whereEqualTo("trail_id", trail).get();
