@@ -86,10 +86,9 @@ public class LearningTrailMainActivity extends Activity implements ListItemClick
     @Override
     public void onListItemClick(int position) {
         LearningTrail item = (LearningTrail) adapter.getItem(position);
-        Log.d("ACTIVITY", item.getName());
-        Log.d("[TextView]", String.valueOf(item.getId()));
 
-        //Go to Trail Stations list
+        Intent i = new Intent(getApplicationContext(), ViewTrailStationActivity.class);
+        startActivity(i);
 
     }
 }
