@@ -7,7 +7,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.text.format.DateFormat;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -37,10 +36,10 @@ public class SetLearningTrailActivity extends AppCompatActivity implements View.
     private String ymd;
     public static final String NAME = "name";
     private static final String COLLECTION = "trails";
-    public static String DOCUMENTID;
-    public static String NAMEVALUE;
+    public final static String DOCUMENTID ="org.nus.trailblaze.docID";
+    public final static String NAMEVALUE = "org.nus.trailblaze.nameID";
     private String documentID;
-    private String nameID;
+    private String nameValue;
 
     Map<String, Object> trailDataMap = new HashMap<>();
 
@@ -58,14 +57,12 @@ public class SetLearningTrailActivity extends AppCompatActivity implements View.
 
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
-        nameID = bundle.getString(NAMEVALUE);
-        Log.d("[ID-n]", String.valueOf(nameID));
+        nameValue = bundle.getString(NAMEVALUE);
         documentID = bundle.getString(DOCUMENTID);
-        Log.d("[ID-d]", String.valueOf(documentID));
 
-        if (nameID != null) {
-            nameID = nameID.substring(nameID.lastIndexOf("-") + 1);
-            et.setText(nameID);
+        if (nameValue != null) {
+            nameValue = nameValue.substring(nameValue.lastIndexOf("-") + 1);
+            et.setText(nameValue);
         }
 
         Date date = new Date();

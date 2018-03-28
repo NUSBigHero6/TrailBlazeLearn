@@ -63,7 +63,7 @@ public class LearningTrailHolder extends RecyclerView.ViewHolder implements View
                         //Delete the first row will crash
                         documentID = docSnapshot.getId();
                         //Log.d("[DocID]", String.valueOf(documentID));
-                        final String nameID = docSnapshot.getData().get(SetLearningTrailActivity.NAME).toString();
+                        final String nameValue = docSnapshot.getData().get(SetLearningTrailActivity.NAME).toString();
                         switch (item.getItemId()) {
                             case R.id.itemDelete:
                                 db.collection("trails").document(documentID)
@@ -74,8 +74,8 @@ public class LearningTrailHolder extends RecyclerView.ViewHolder implements View
                                 Bundle bundle = new Bundle();
                                 bundle.putString(SetLearningTrailActivity.DOCUMENTID, documentID);
                                 Log.d("[ID-d]", String.valueOf(documentID));
-                                bundle.putString(SetLearningTrailActivity.NAMEVALUE, nameID);
-                                Log.d("[ID-n]", String.valueOf(nameID));
+                                bundle.putString(SetLearningTrailActivity.NAMEVALUE, nameValue);
+                                Log.d("[ID-n]", String.valueOf(nameValue));
                                 intent.putExtras(bundle);
                                 context.startActivity(intent);
                                 break;
