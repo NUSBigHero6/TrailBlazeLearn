@@ -90,7 +90,6 @@ public class TestLearningDao {
         trail.setName("cheekit");
         trail.setTrailDate(new Date());
         trail.setTrainer(new Trainer("1", "323", "323"));
-        trail.setTrailStations(Arrays.asList("id1", "id2"));
 
         // creating a trail information.
         LearningTrailDao dao = new LearningTrailDao(this.cref);
