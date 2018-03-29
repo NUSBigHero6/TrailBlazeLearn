@@ -2,12 +2,10 @@ package org.nus.trailblaze.views;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.text.format.DateFormat;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,9 +13,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.Date;
+import java.util.UUID;
 
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import org.nus.trailblaze.R;
@@ -44,6 +41,7 @@ public class SetLearningTrailActivity extends AppCompatActivity implements View.
     private String nameValue;
     private LearningTrail learningTrail;
     private String trailName;
+    private Trainer trainer;
 
     FirebaseFirestore db = FirebaseFirestore.getInstance();
 
@@ -72,6 +70,8 @@ public class SetLearningTrailActivity extends AppCompatActivity implements View.
 
         ymd = year + monthNumber + day;
         titlecode.setText(ymd);
+
+        //trainer = intent.getStringExtra("trainer");
 
         et.addTextChangedListener(new TextWatcher() {
 
@@ -102,32 +102,15 @@ public class SetLearningTrailActivity extends AppCompatActivity implements View.
             Toast.makeText(SetLearningTrailActivity.this, "Please enter a Trail Code",
                     Toast.LENGTH_SHORT).show();
         }
-        else if (documentID == null) {
+        else {
 
-            learningTrail = new LearningTrail("ID1", new Date(), this.trailcode, null);
-//            LearningTrailDao learningTrailDao = new LearningTrailDao(SetLearningTrailActivity.this, learningTrail);
-//            learningTrailDao.SaveLearningTrail();
+            String trailID = UUID.randomUUID().toString();
+            learningTrail = new LearningTrail(trailID, new Date(), trailcode,trainer);
+            LearningTrailDao learningTrailDao = new LearningTrailDao(SetLearningTrailActivity.this, learningTrail);
+            learningTrailDao.SaveLearningTrail(documentID);
 
-            db.collection(COLLECTION).document().set(learningTrail)
-
-                    .addOnSuccessListener(new OnSuccessListener<Void>() {
-                        @Override
-                        public void onSuccess(Void aVoid) {
-                            Toast.makeText(SetLearningTrailActivity.this, "Learning Trail Saved",
-                                    Toast.LENGTH_SHORT).show();
-
-                            Intent i = new Intent(getApplicationContext(), LearningTrailMainActivity.class);
-                            startActivity(i);
-                        }
-                    })
-                    .addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-                            Toast.makeText(SetLearningTrailActivity.this, "ERROR" + e.toString(),
-                                    Toast.LENGTH_SHORT).show();
-                            Log.d("TAG", e.toString());
-                        }
-                    });
+            Intent intent = new Intent(getApplicationContext(), LearningTrailMainActivity.class);
+            startActivity(intent);
         }
     }
 }
