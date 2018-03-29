@@ -18,6 +18,7 @@ import org.nus.trailblaze.R;
 import org.nus.trailblaze.dao.LearningTrailDao;
 import org.nus.trailblaze.listeners.ListItemClickListener;
 import org.nus.trailblaze.models.LearningTrail;
+import org.nus.trailblaze.models.Trainer;
 import org.nus.trailblaze.views.SetLearningTrailActivity;
 
 import static android.content.ContentValues.TAG;
@@ -35,10 +36,11 @@ public class LearningTrailHolder extends RecyclerView.ViewHolder implements View
     private ListItemClickListener listener;
     private Context context;
     private LearningTrailDao trailDao;
-
+    private Trainer trainer;
     FirebaseFirestore db;
 
-    public LearningTrailHolder(final Context context, final View itemView, ListItemClickListener listener, final DocumentSnapshot docSnapshot) {
+    public LearningTrailHolder(final Context context, final View itemView,
+                               ListItemClickListener listener, Trainer trainer) {
         super(itemView);
         itemView.setOnClickListener(this);
 
@@ -47,6 +49,8 @@ public class LearningTrailHolder extends RecyclerView.ViewHolder implements View
         this.learningTrailView = (RecyclerView) itemView.findViewById(R.id.rvLearningTrail);
         this.LearningTrailName = (TextView) itemView.findViewById(R.id.tvLearningTrailName);
         this.btnOptions = (Button) itemView.findViewById(R.id.btnOptions);
+
+        this.trainer = trainer;
 
         db = FirebaseFirestore.getInstance();
         trailDao = new LearningTrailDao(db.collection("trails"));
@@ -73,10 +77,14 @@ public class LearningTrailHolder extends RecyclerView.ViewHolder implements View
                                 break;
                             case R.id.itemEdit:
                                 Intent intent = new Intent(context.getApplicationContext(), SetLearningTrailActivity.class);
+
                                 Bundle bundle = new Bundle();
                                 bundle.putString(SetLearningTrailActivity.DOCUMENTID, trail.getId());
                                 bundle.putString(SetLearningTrailActivity.NAMEVALUE, trail.getName());
                                 intent.putExtras(bundle);
+
+                                intent.putExtra("trainer", Trainer.fromUser(LearningTrailHolder.this.trainer));
+
                                 context.startActivity(intent);
                                 break;
                         }

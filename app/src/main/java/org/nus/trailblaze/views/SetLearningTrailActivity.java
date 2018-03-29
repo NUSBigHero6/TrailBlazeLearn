@@ -52,6 +52,7 @@ public class SetLearningTrailActivity extends AppCompatActivity implements View.
 
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
+
         nameValue = bundle.getString(NAMEVALUE);
         documentID = bundle.getString(DOCUMENTID);
 
@@ -107,6 +108,7 @@ public class SetLearningTrailActivity extends AppCompatActivity implements View.
             learningTrailDao.SaveLearningTrail(documentID);
 
             Intent intent = new Intent(getApplicationContext(), LearningTrailMainActivity.class);
+            intent.putExtra("trainer", Trainer.fromUser(this.trainer));
             startActivity(intent);
         }
     }

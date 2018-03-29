@@ -15,6 +15,7 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 import org.nus.trailblaze.R;
 import org.nus.trailblaze.listeners.ListItemClickListener;
 import org.nus.trailblaze.models.LearningTrail;
+import org.nus.trailblaze.models.Trainer;
 import org.nus.trailblaze.viewholders.LearningTrailHolder;
 
 /**
@@ -27,11 +28,13 @@ public class LearningTrailFirestoreAdaptor extends FirestoreRecyclerAdapter<Lear
     final private ListItemClickListener mOnClickListener;
     private View itemView;
     private DocumentSnapshot docSnapshot;
+    private Trainer trainer;
 
     public LearningTrailFirestoreAdaptor(FirestoreRecyclerOptions<LearningTrail> response,
-                                ListItemClickListener listener) {
+                                        ListItemClickListener listener, Trainer trainer) {
         super(response);
         mOnClickListener = listener;
+        this.trainer = trainer;
     }
 
     public LearningTrailHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
@@ -42,7 +45,8 @@ public class LearningTrailFirestoreAdaptor extends FirestoreRecyclerAdapter<Lear
         boolean shouldAttachToParentImmediately = false;
 
         itemView = inflater.inflate(layoutIdForListItem, viewGroup, shouldAttachToParentImmediately);
-        LearningTrailHolder viewHolder = new LearningTrailHolder(context, itemView, mOnClickListener, docSnapshot);
+        LearningTrailHolder viewHolder = new LearningTrailHolder(context, itemView,
+                mOnClickListener, this.trainer);
 
         return viewHolder;
 

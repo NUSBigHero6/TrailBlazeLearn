@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -17,6 +18,8 @@ import org.nus.trailblaze.R;
 import org.nus.trailblaze.adapters.LearningTrailFirestoreAdaptor;
 import org.nus.trailblaze.listeners.ListItemClickListener;
 import org.nus.trailblaze.models.LearningTrail;
+import org.nus.trailblaze.models.Trainer;
+import org.nus.trailblaze.models.User;
 
 public class LearningTrailMainActivity extends Activity implements ListItemClickListener {
 
@@ -29,18 +32,25 @@ public class LearningTrailMainActivity extends Activity implements ListItemClick
     private FirebaseFirestore firestoreDB;
 
     private Button btnAddLearningTrail;
+    private Trainer trainer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.learning_trail_main);
+
+        this.trainer = Trainer.fromUser((User) this.getIntent().getExtras().get("trainer"));
+
+        Log.d("Trainer", this.trainer.getId());
+
         mRecyclerView = (RecyclerView) findViewById(R.id.rvLearningTrail);
         btnAddLearningTrail = (Button) findViewById(R.id.btnAddLearningTrail);
         btnAddLearningTrail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(LearningTrailMainActivity.this, SetLearningTrailActivity.class);
-                startActivity(intent); // startActivity allow you to move
+                intent.putExtra("trainer", Trainer.fromUser(LearningTrailMainActivity.this.trainer));
+                startActivity(intent);
             }
         });
 
@@ -64,7 +74,7 @@ public class LearningTrailMainActivity extends Activity implements ListItemClick
                 .setQuery(query, LearningTrail.class)
                 .build();
 
-        adapter = new LearningTrailFirestoreAdaptor(response, this);
+        adapter = new LearningTrailFirestoreAdaptor(response, this, this.trainer);
 
         adapter.notifyDataSetChanged();
         mRecyclerView.setAdapter(adapter);
