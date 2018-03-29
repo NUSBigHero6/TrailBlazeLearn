@@ -33,11 +33,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".TrailBlazeMainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".views.SetLearningTrailActivity" >
 
@@ -54,7 +50,13 @@
         <activity android:name=".views.ContributedItemDocActivity"></activity>
         <activity android:name=".views.ContributedItemMediaActivity"></activity>
         <activity android:name=".views.TrailBlazeItemViewerActivity" />
-        <activity android:name=".views.TrailBlazaFeedActivity" />
+        <activity android:name=".views.TrailBlazaFeedActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".views.ViewTrailStationActivity" />
         <activity android:name=".views.NewTrailStationActivity"/>
 

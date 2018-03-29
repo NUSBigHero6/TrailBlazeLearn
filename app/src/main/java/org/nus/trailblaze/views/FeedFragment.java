@@ -57,12 +57,12 @@ public class FeedFragment extends Fragment
 
         firestoreDB = FirebaseFirestore.getInstance();
 
-        loadItemsList();
+        loadItemsList("TrailStationId1");
     }
 
-    private void loadItemsList() {
+    private void loadItemsList(String trailStationId) {
 
-        Query query = firestoreDB.collection("contributed_items");
+        Query query = firestoreDB.collection("contributed_items").whereEqualTo("trailStationId", trailStationId);
 
         FirestoreRecyclerOptions<ContributedItem> response = new FirestoreRecyclerOptions.Builder<ContributedItem>()
                 .setQuery(query, ContributedItem.class)
@@ -72,15 +72,12 @@ public class FeedFragment extends Fragment
 
         adapter.notifyDataSetChanged();
         mRecyclerView.setAdapter(adapter);
-
-        Log.d("Test", "adapter");
     }
 
     @Override
     public void onStart() {
         super.onStart();
         adapter.startListening();
-        Log.d("Test", "onStart");
     }
 
     @Override
@@ -105,7 +102,6 @@ public class FeedFragment extends Fragment
 
     @Override
     public void onListItemClick(int position) {
-        Log.d("TEst", String.valueOf(position));
         // Send the event to the host activity
         mPassItem.passItem((ContributedItem)adapter.getItem(position));
     }
