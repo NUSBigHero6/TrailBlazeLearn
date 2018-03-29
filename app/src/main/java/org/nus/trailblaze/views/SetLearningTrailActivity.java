@@ -71,8 +71,6 @@ public class SetLearningTrailActivity extends AppCompatActivity implements View.
         ymd = year + monthNumber + day;
         titlecode.setText(ymd);
 
-        //trainer = intent.getStringExtra("trainer");
-
         et.addTextChangedListener(new TextWatcher() {
 
             @Override
@@ -104,8 +102,10 @@ public class SetLearningTrailActivity extends AppCompatActivity implements View.
         }
         else {
 
+            //Generate ID for trailID
             String trailID = UUID.randomUUID().toString();
-            learningTrail = new LearningTrail(trailID, new Date(), trailcode,trainer);
+            //todo: get trainer value
+            learningTrail = new LearningTrail(trailID, new Date(), trailcode, trainer);
             LearningTrailDao learningTrailDao = new LearningTrailDao(SetLearningTrailActivity.this, learningTrail);
             learningTrailDao.SaveLearningTrail(documentID);
 

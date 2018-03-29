@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -87,8 +86,9 @@ public class LearningTrailMainActivity extends Activity implements ListItemClick
     public void onListItemClick(int position) {
         LearningTrail item = (LearningTrail) adapter.getItem(position);
 
-        Intent i = new Intent(getApplicationContext(), ViewTrailStationActivity.class);
-        startActivity(i);
+        Intent intent = new Intent(this, ViewTrailStationActivity.class);
+        intent.putExtra("trailDI", item.getName().toString());
+        startActivity(intent);
 
     }
 }
