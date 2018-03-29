@@ -72,7 +72,6 @@ public class LearningTrailHolder extends RecyclerView.ViewHolder implements View
                                 trailDao.deleteTrail(trail);
                                 break;
                             case R.id.itemEdit:
-
                                 Intent intent = new Intent(context.getApplicationContext(), SetLearningTrailActivity.class);
                                 Bundle bundle = new Bundle();
                                 bundle.putString(SetLearningTrailActivity.DOCUMENTID, trail.getId());

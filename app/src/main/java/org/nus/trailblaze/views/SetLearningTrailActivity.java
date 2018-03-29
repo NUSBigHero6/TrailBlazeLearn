@@ -15,12 +15,11 @@ import android.widget.Toast;
 import java.util.Date;
 import java.util.UUID;
 
-import com.google.firebase.firestore.FirebaseFirestore;
-
 import org.nus.trailblaze.R;
 import org.nus.trailblaze.dao.LearningTrailDao;
 import org.nus.trailblaze.models.LearningTrail;
 import org.nus.trailblaze.models.Trainer;
+import org.nus.trailblaze.models.User;
 
 /**
  * Created by priyanka on 15/3/2018.
@@ -33,8 +32,6 @@ public class SetLearningTrailActivity extends AppCompatActivity implements View.
     private EditText et;
     private Button btn;
     private String ymd;
-    public static final String NAME = "name";
-    private static final String COLLECTION = "trails";
     public final static String DOCUMENTID ="org.nus.trailblaze.docID";
     public final static String NAMEVALUE = "org.nus.trailblaze.nameID";
     private String documentID;
@@ -43,16 +40,16 @@ public class SetLearningTrailActivity extends AppCompatActivity implements View.
     private String trailName;
     private Trainer trainer;
 
-    FirebaseFirestore db = FirebaseFirestore.getInstance();
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.set_learning_trail);
+
         titlecode = findViewById(R.id.trailCodeDisplay);
         btn = (Button) findViewById(R.id.newTrail);
         btn.setOnClickListener(this);
         et = (EditText) findViewById(R.id.trailCode);
+
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
         nameValue = bundle.getString(NAMEVALUE);
@@ -71,6 +68,8 @@ public class SetLearningTrailActivity extends AppCompatActivity implements View.
         ymd = year + monthNumber + day;
         titlecode.setText(ymd);
 
+        this.trainer = Trainer.fromUser((User) this.getIntent().getExtras().get("trainer"));
+
         et.addTextChangedListener(new TextWatcher() {
 
             @Override
@@ -83,7 +82,6 @@ public class SetLearningTrailActivity extends AppCompatActivity implements View.
                 trailName = et.getText().toString();
                 trailName = ymd + "-" + trailName;
                 titlecode.setText(trailName);
-
             }
 
             @Override
@@ -104,7 +102,6 @@ public class SetLearningTrailActivity extends AppCompatActivity implements View.
 
             //Generate ID for trailID
             String trailID = UUID.randomUUID().toString();
-            //todo: get trainer value
             learningTrail = new LearningTrail(trailID, new Date(), trailcode, trainer);
             LearningTrailDao learningTrailDao = new LearningTrailDao(SetLearningTrailActivity.this, learningTrail);
             learningTrailDao.SaveLearningTrail(documentID);

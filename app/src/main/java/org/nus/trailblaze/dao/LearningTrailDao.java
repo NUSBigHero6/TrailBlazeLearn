@@ -14,8 +14,6 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 import org.nus.trailblaze.models.LearningTrail;
 import org.nus.trailblaze.models.Trainer;
-import org.nus.trailblaze.views.LearningTrailMainActivity;
-import org.nus.trailblaze.views.SetLearningTrailActivity;
 
 /**
  * Created by plasmashadow on 3/24/18.
