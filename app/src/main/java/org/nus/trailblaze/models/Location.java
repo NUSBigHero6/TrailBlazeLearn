@@ -5,11 +5,11 @@ package org.nus.trailblaze.models;
  */
 
 public class Location {
-    private Float longitude;
-    private Float latitude;
+    private double longitude;
+    private double latitude;
     private String name;
 
-    public  Location(Float logitude,Float latitude,String name)
+    public  Location(double logitude,double latitude,String name)
     {
         this.longitude=logitude;
         this.latitude=latitude;
@@ -17,7 +17,7 @@ public class Location {
 
     }
 
-    public Float getLongitude() {
+    public double getLongitude() {
         return longitude;
     }
 
@@ -25,7 +25,7 @@ public class Location {
         this.longitude = longitude;
     }
 
-    public Float getLatitude() {
+    public double getLatitude() {
         return latitude;
     }
 

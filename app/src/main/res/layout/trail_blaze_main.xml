@@ -74,57 +74,6 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"/>
 
-        <Button
-            android:text="View ContributedItem List"
-            android:background="@drawable/btn_google"
-            android:id="@+id/btn_ContributedItemList"
-            android:textColor="@color/white"
-            android:onClick="googleClickListener"
-            android:textStyle="bold"
-            android:layout_marginTop="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"/>
-
-        <Button
-            android:text="Create ContributedItem Document"
-            android:background="@drawable/btn_google"
-            android:id="@+id/btn_create_ContributedItem_Doc"
-            android:textColor="@color/white"
-            android:onClick="googleClickListener"
-            android:textStyle="bold"
-            android:layout_marginTop="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"/>
-
-        <Button
-            android:text="Create ContributedItem Image"
-            android:background="@drawable/btn_google"
-            android:id="@+id/btn_create_ContributedItem_Img"
-            android:textColor="@color/white"
-            android:onClick="googleClickListener"
-            android:textStyle="bold"
-            android:layout_marginTop="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"/>
-
-        <Button
-            android:text="Create ContributedItem Media"
-            android:background="@drawable/btn_google"
-            android:id="@+id/btn_create_ContributedItem_Media"
-            android:textColor="@color/white"
-            android:onClick="googleClickListener"
-            android:textStyle="bold"
-            android:layout_marginTop="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"/>
-
-
-            android:layout_gravity="center_horizontal"
-            android:textAllCaps="false"/>
     </LinearLayout>
         <ProgressBar
             style="?android:attr/progressBarStyleLarge"

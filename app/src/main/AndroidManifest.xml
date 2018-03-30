@@ -45,9 +45,7 @@
         <activity android:name=".views.ParticipantJoin" />
         <activity android:name=".views.LearningTrailMainActivity" >
         </activity>
-        <activity android:name=".views.SetLearningTrailActivity"></activity>
-        <activity android:name=".views.LearningTrailMainActivity"></activity>
-        <activity android:name=".views.ParticipantJoin" />
+
         <activity android:name=".views.TrailBlazaFeedActivity" />
         <activity
             android:name=".views.RoleToggler"
@@ -56,13 +54,9 @@
         <activity android:name=".views.ContributedItemImageActivity"></activity>
         <activity android:name=".views.ContributedItemDocActivity"></activity>
         <activity android:name=".views.ContributedItemMediaActivity"></activity>
-        <activity android:name=".views.ContributedItemImageActivity" />
-        <activity android:name=".views.ContributedItemDocActivity" />
-        <activity android:name=".views.ContributedItemMediaActivity" />
+
         <activity android:name=".views.TrailBlazeItemViewerActivity" />
-        <activity android:name=".views.ViewTrailStationActivity" />
-        <activity android:name=".views.NewTrailStationActivity" />
-        <activity android:name=".views.TrailBlazaFeedActivity" />
+
         <activity android:name=".views.TrailStationMainActivity" />
         <activity android:name=".views.SetTrailStationActivity"/>
         <activity android:name=".views.DiscussionThreadActivity">

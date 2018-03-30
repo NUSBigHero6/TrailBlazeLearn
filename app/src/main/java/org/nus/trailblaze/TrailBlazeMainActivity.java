@@ -69,32 +69,6 @@ public class TrailBlazeMainActivity extends AppCompatActivity {
         setContentView(R.layout.trail_blaze_main);
         FirebaseApp.initializeApp(this);
         ButterKnife.bind(this);
-
-        btn_create_ContributedItem_Doc=(Button)findViewById(R.id.btn_create_ContributedItem_Doc);
-        btn_create_ContributedItem_Doc.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), ContributedItemDocActivity.class));
-            }
-        });
-
-        btn_create_ContributedItem_Img=(Button)findViewById(R.id.btn_create_ContributedItem_Img);
-        btn_create_ContributedItem_Img.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), ContributedItemImageActivity.class));
-            }
-        });
-
-        btn_create_ContributedItem_Media=(Button)findViewById(R.id.btn_create_ContributedItem_Media);
-        btn_create_ContributedItem_Media.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), ContributedItemMediaActivity.class));
-            }
-        });
-
-        btn_ContributedItemList=(Button)findViewById(R.id.btn_ContributedItemList);
         // CallbackManager to initalize the Facebook button
         fmanager = LoginManager.getInstance();
         mCallback = CallbackManager.Factory.create();
