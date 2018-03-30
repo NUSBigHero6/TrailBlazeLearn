@@ -11,6 +11,9 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import org.nus.trailblaze.R;
@@ -19,6 +22,8 @@ import org.nus.trailblaze.fragments.DocFragment;
 import org.nus.trailblaze.fragments.FeedFragment;
 import org.nus.trailblaze.fragments.PhotoFragment;
 import org.nus.trailblaze.models.ContributedItem;
+
+import java.util.Date;
 
 public class ContributedItemMainActivity  extends FragmentActivity
         implements FeedFragment.OnPassItem{
@@ -33,7 +38,6 @@ public class ContributedItemMainActivity  extends FragmentActivity
 
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-
         //Initializing Fragments
         feedFragment = new FeedFragment();
 
@@ -49,13 +53,13 @@ public class ContributedItemMainActivity  extends FragmentActivity
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.menu_docs:
-
+                    startActivity(new Intent(getApplicationContext(),ContributedItemDocActivity.class));
                     return true;
                 case R.id.menu_photos:
-
+                    startActivity(new Intent(getApplicationContext(),ContributedItemImageActivity.class));
                     return true;
                 case R.id.menu_audio:
-
+                    startActivity(new Intent(getApplicationContext(),ContributedItemMediaActivity.class));
                     return true;
             }
             return false;
