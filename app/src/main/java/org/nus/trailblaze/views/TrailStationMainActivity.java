@@ -53,6 +53,7 @@ public class TrailStationMainActivity extends AppCompatActivity implements ListI
     private Trainer trainer;
     private String trailID;
     private String userMode;
+    private User user;
 
 
     @Override
@@ -69,7 +70,7 @@ public class TrailStationMainActivity extends AppCompatActivity implements ListI
         Intent intent = getIntent();
         trailID = intent.getStringExtra("trailID");
         userMode = intent.getStringExtra("userMode");
-
+        user=(User)getIntent().getSerializableExtra("user");
 
         mBtnAddStation.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -155,6 +156,7 @@ public class TrailStationMainActivity extends AppCompatActivity implements ListI
             intent = new Intent(getApplicationContext(), ViewDetailStationActivity.class);
             intent.putExtra("location",item.getLocation().getName());
             intent.putExtra("instructions",item.getInstruction());
+            intent.putExtra("user",user);
         }
         intent.putExtra("trailID", trailID);
         intent.putExtra("stationID",item.getId());

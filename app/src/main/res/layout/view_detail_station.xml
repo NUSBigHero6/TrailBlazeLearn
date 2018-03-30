@@ -66,6 +66,18 @@
                 android:text="Instruction here" />
         </LinearLayout>
 
+
+        <Button
+            android:id="@+id/btnGotoContributedItem"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/btnGotoDiscThread"
+            android:layout_marginTop="30dp"
+            android:background="@color/colorAccent"
+            android:text="Go to Contributed Item"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="18dp" />
         <Button
         android:id="@+id/btnGotoDiscThread"
         android:layout_width="match_parent"
@@ -77,5 +89,7 @@
         android:textAllCaps="false"
         android:textSize="18dp"
         android:text="Go to Discussion Thread" />
+
+
     </RelativeLayout>
 </RelativeLayout>

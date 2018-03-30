@@ -47,11 +47,13 @@ public class ContributedItemMainActivity  extends FragmentActivity
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
         firebaseAuth = FirebaseAuth.getInstance();
-
+        user=(User)getIntent().getSerializableExtra("user");
         //Account Settings Toolbar
         Toolbar itemToolbar = findViewById(R.id.itemToolbar);
         itemToolbar.setTitle("Contributed Item");
-
+        Intent intent = getIntent();
+        learningTailId = intent.getStringExtra("trailID");
+        trailStationId = intent.getStringExtra("stationID");
         //Initializing Fragments
         feedFragment = new FeedFragment();
         Bundle bundle = new Bundle();
@@ -69,13 +71,25 @@ public class ContributedItemMainActivity  extends FragmentActivity
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.menu_docs:
-                    startActivity(new Intent(getApplicationContext(),ContributedItemDocActivity.class));
+                    Intent dIntent=new Intent(getApplicationContext(),ContributedItemDocActivity.class);
+                    dIntent.putExtra("trailID", trailStationId);
+                    dIntent.putExtra("stationID", learningTailId);
+                    dIntent.putExtra("user",user);
+                    startActivity(dIntent);
                     return true;
                 case R.id.menu_photos:
-                    startActivity(new Intent(getApplicationContext(),ContributedItemImageActivity.class));
+                    Intent pIntent=new Intent(getApplicationContext(),ContributedItemDocActivity.class);
+                    pIntent.putExtra("trailID", trailStationId);
+                    pIntent.putExtra("stationID", learningTailId);
+                    pIntent.putExtra("user",user);
+                    startActivity(pIntent);
                     return true;
                 case R.id.menu_audio:
-                    startActivity(new Intent(getApplicationContext(),ContributedItemMediaActivity.class));
+                    Intent aIntent=new Intent(getApplicationContext(),ContributedItemDocActivity.class);
+                    aIntent.putExtra("trailID", trailStationId);
+                    aIntent.putExtra("stationID", learningTailId);
+                    aIntent.putExtra("user",user);
+                    startActivity(aIntent);
                     return true;
             }
             return false;

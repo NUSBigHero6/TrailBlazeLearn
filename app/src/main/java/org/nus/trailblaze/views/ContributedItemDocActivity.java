@@ -50,11 +50,12 @@ public class ContributedItemDocActivity extends AppCompatActivity  {
     private EditText editText_Description;
     private TextView textView_Comment;
     //Get Participant from context
-    Participant p= new Participant("PT1","Participant (Green)","Green@test.com");
+   // Participant p= new Participant("PT1","Participant (Green)","Green@test.com");
+    private User user;
     TextDocument td= new TextDocument(UUID.randomUUID().toString(),"Document (PDF/Text)","Test@Url",1.0f,new Date(),"PDF/TXT" );
 
-    String trailStationId="TrailStationId1";
-    String learingTrailId="LearningTrailId1";
+    String trailStationId;
+    String learningTailId;
     ContributedItem ci;
 
     @Override
@@ -65,6 +66,11 @@ public class ContributedItemDocActivity extends AppCompatActivity  {
         setSupportActionBar(myToolbar);
         //Set toolbar text as TrailStation Id
         //Initialize Views
+        Intent intent = getIntent();
+        learningTailId = intent.getStringExtra("trailID");
+        trailStationId = intent.getStringExtra("stationID");
+        user=(User)intent.getSerializableExtra("user");
+
         btnChoose = (ImageButton) findViewById(R.id.btnChoose);
         btnUpload = (Button) findViewById(R.id.btnUpload);
         editText_Description=(EditText)findViewById(R.id.editText_Description);
@@ -74,8 +80,8 @@ public class ContributedItemDocActivity extends AppCompatActivity  {
             @Override
             public void onClick(View v) {
                 chooseFile();
-                ci= new ContributedItem(UUID.randomUUID().toString(),p,new Date(),td,
-                        editText_Description.getText().toString(),trailStationId,learingTrailId);
+                ci= new ContributedItem(UUID.randomUUID().toString(),user,new Date(),td,
+                        editText_Description.getText().toString(),trailStationId,learningTailId);
 
             }
         });
