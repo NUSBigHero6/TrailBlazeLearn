@@ -19,6 +19,7 @@ public class User implements Parcelable {
     private String id;
     private String name;
     private String email;
+//    private String profileImage;
 
     public User() {}
 
@@ -26,6 +27,7 @@ public class User implements Parcelable {
         this.id = id;
         this.name = name;
         this.email = email;
+//        this.profileImage = profileImage;
     }
 
     public User(Parcel in){
@@ -33,6 +35,7 @@ public class User implements Parcelable {
         this.id = in.readString();
         this.name = in.readString();
         this.email = in.readString();
+//        this.profileImage = in.readString();
     }
 
     public String getId() {
@@ -59,6 +62,10 @@ public class User implements Parcelable {
         this.email = email;
     }
 
+//    public String getPhotoUrl(String profileImage) { return profileImage; }
+//
+//    public void setPhotoUrl(String profileImage) { this.profileImage = profileImage; }
+
     @Override
     public int describeContents() {
         return 0;
@@ -69,5 +76,6 @@ public class User implements Parcelable {
         parcel.writeString(this.id);
         parcel.writeString(this.name);
         parcel.writeString(this.email);
+//        parcel.writeString(this.profileImage);
     }
 }

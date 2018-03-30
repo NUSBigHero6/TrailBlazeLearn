@@ -1,17 +1,16 @@
 
-package org.nus.trailblaze.ContributedItemTest;
+package org.nus.trailblaze.adaptors;
 
 /**
  * Created by liu.cao on 26/3/2018.
  */
-import android.content.Intent;
 
 import  org.junit.Test;
 import org.nus.trailblaze.adapters.IntentHelper;
 
 import static junit.framework.Assert.assertTrue;
 
-public class IntentHelperTest {
+public class TestIntentHelper {
 @Test
 public void testgetMimeTypes()
 {

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="org.nus.trailblaze.views.NewTrailStationActivity">
+    tools:context="org.nus.trailblaze.views.SetTrailStationActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -14,6 +14,13 @@
         android:layout_alignParentStart="true"
         android:orientation="vertical"
         android:id="@+id/linearLayout">
+
+        <fragment
+            android:id="@+id/place_autocomplete_fragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:name="com.google.android.gms.location.places.ui.PlaceAutocompleteFragment"
+            />
 
         <EditText
             android:id="@+id/trail_location"
@@ -32,6 +39,15 @@
             android:hint="Enter Name" />
 
         <EditText
+            android:id="@+id/trail_sequence"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:inputType="number"
+            android:background="@drawable/edit_text"
+            android:hint="Enter Order of sequence" />
+
+        <EditText
             android:id="@+id/trail_instructions"
             android:layout_width="match_parent"
             android:layout_height="100dp"
@@ -41,15 +57,6 @@
             android:hint="Specific Instructions"
             android:inputType="textMultiLine" />
 
-        <EditText
-            android:id="@+id/disc_thread"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/edit_text"
-            android:ems="10"
-            android:hint="Discussion Thread (Optional)"
-            android:inputType="textMultiLine" />
 
         <Button
             android:id="@+id/btn_save_station"
@@ -62,7 +69,5 @@
             android:textColor="@color/white"
             android:textStyle="bold" />
     </LinearLayout>
-
-
 
 </RelativeLayout>

@@ -40,8 +40,8 @@ public class AudioPlayerActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_audio_player);
-        //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        //setSupportActionBar(toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -105,6 +105,8 @@ public class AudioPlayerActivity extends AppCompatActivity
         switch (item.getItemId()) {
             case android.R.id.home:
 
+                progressDialog.dismiss();
+
                 Intent intent = new Intent(AudioPlayerActivity.this, TrailBlazaFeedActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
@@ -119,10 +121,6 @@ public class AudioPlayerActivity extends AppCompatActivity
     @Override
     public void onDestroy() {
         super.onDestroy();
-
-        if (stop.isEnabled()) {
-            stop();
-        }
     }
 
     public void onCompletion(MediaPlayer mp) {
@@ -144,6 +142,7 @@ public class AudioPlayerActivity extends AppCompatActivity
 
     private void stop() {
         Log.d("stop", "reached");
+
         mp.stop();
         pause.setEnabled(false);
         stop.setEnabled(false);

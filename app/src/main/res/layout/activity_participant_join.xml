@@ -41,9 +41,18 @@
             android:layout_marginTop="30dp"
             android:background="@drawable/button_style"
             android:onClick="search"
-            android:text="Search"
+            android:text="Join"
             android:textColor="@color/white"
             android:textStyle="bold" />
+
+        <ProgressBar
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/searchPrgoressBar"
+            android:layout_gravity="center_horizontal"
+            android:progressDrawable="@drawable/circular_progress_bar"
+            android:visibility="invisible"/>
 
     </LinearLayout>
 </RelativeLayout>

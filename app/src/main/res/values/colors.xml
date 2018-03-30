@@ -1,10 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#0aa6df</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="primaryTextColor">#333</color>
+    <color name="colorPrimary">#00BCD4</color>
+    <color name="colorPrimaryDark">#0097A7</color>
+    <color name="colorAccent">#FF9800</color>
     <color name="white">#FFF</color>
+    <color name="danger">#f44336</color>
     <color name="trainer">#24d674</color>
-    <color name="participant">#834b14</color>
+    <color name="participant">#42A5F5</color>
+    <color name="textColorPrimary">#fff</color>
+    <color name="colorControlNormal">#FF9800</color>
+    <color name="colorControlActivated">#E65100</color>
+    <color name="colorControlHighlight">#FFB74D</color>
     <color name="logout">#634242</color>
+    <color name="colorNoResultText">#aaaaaa</color>
 </resources>

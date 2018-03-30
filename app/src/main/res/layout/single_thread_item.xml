@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:elevation="30dp"
+    android:layout_margin="20dp">
+
+    <LinearLayout
+        android:id="@+id/main_thread_post"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/thread_user_image"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@color/colorAccent" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingLeft="8dp">
+
+                <TextView
+                    android:id="@+id/thread_user_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="UserName" />
+
+                <TextView
+                    android:id="@+id/thread_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="12 January, 2018" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:paddingTop="8dp">
+
+            <ImageView
+                android:id="@+id/thread_image"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:background="#c6c4c4" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/thread_desc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="8dp"
+            android:text="This is some dummy text. I took this picture from google a long long long long long time ago. Now I want to share with all of you"
+            android:textSize="12sp" />
+    </LinearLayout>
+</android.support.v7.widget.CardView>

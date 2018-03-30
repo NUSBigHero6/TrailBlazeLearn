@@ -9,10 +9,12 @@ import java.util.Date;
 public class Post extends Item{
     private String message;
 
+    public Post(){}
     public Post(String id, User user, Date createdDate, File file, String message) {
         super(id, user, createdDate, file);
         this.message = message;
     }
+
 
     public String getMessage() {
         return message;

@@ -4,4 +4,5 @@
     <string name="fb_login_protocol_scheme">fb1235308173280684</string>
     <string name="title_activity_role_toggler">RoleToggler</string>
     <string name="add_learning_trail">Add Learning Trail</string>
+    <string name="no_trail_result">No trail record yet.</string>
 </resources>

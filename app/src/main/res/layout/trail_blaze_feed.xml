@@ -5,10 +5,10 @@
     android:layout_height="match_parent"
     tools:context="org.nus.trailblaze.views.ViewTrialStationActivity">
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/tb_feed_view"
-        android:scrollbars="vertical"
+    <fragment android:name="org.nus.trailblaze.views.FeedFragment"
+        android:id="@+id/feed_fragment"
+
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent" />
 
 </FrameLayout>

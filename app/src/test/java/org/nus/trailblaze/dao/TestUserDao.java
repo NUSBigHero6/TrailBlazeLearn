@@ -1,4 +1,4 @@
-package org.nus.trailblaze;
+package org.nus.trailblaze.dao;
 
 import android.app.Activity;
 import android.support.annotation.NonNull;
@@ -15,12 +15,11 @@ import static org.mockito.Mockito.*;
 
 import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.*;
-import org.junit.BeforeClass;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
-import org.nus.trailblaze.dao.UserDao;
 
 import java.util.concurrent.Executor;
 

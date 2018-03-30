@@ -4,12 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="org.nus.trailblaze.views.ViewTrailStationActivity">
+    tools:context="org.nus.trailblaze.views.TrailStationMainActivity">
+
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_trail_station_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="30dp"
         android:scrollbars="vertical" />
 
     <Button
@@ -20,9 +22,8 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentStart="true"
         android:onClick="btnAddStation"
-        android:text="Add Trial Station" />
-
-
+        android:text="Add Trail Station"
+        android:visibility="invisible" />
 
 </RelativeLayout>
 

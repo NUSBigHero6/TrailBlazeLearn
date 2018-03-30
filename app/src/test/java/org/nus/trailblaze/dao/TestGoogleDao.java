@@ -1,4 +1,4 @@
-package org.nus.trailblaze;
+package org.nus.trailblaze.dao;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -27,7 +27,7 @@ import static org.mockito.Mockito.when;
 
 import org.mockito.Mock;
 import static org.junit.Assert.*;
-import org.nus.trailblaze.dao.GoogleDao;
+
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
 import org.powermock.api.mockito.PowerMockito;

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--Author: Priyanka Jalan-->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="org.nus.trailblaze.views.SetupActivity">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <include
+        android:id="@+id/setupToolbar"
+        layout="@layout/toolbar" />
+</LinearLayout>
+<LinearLayout
+    android:padding="30dp"
+    android:orientation="vertical"
+    android:layout_marginTop="50dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:id="@+id/setup_image"
+        android:src="@mipmap/default_image"
+        />
+    <EditText
+            android:layout_marginTop="30dp"
+            android:hint="Your Name ..."
+            android:id="@+id/user_name_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorAccent"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="You are logged in as Trainer"
+        android:layout_gravity="center_horizontal"
+        android:padding="20dp"
+        android:textSize="20sp"
+        />
+        <Button
+            android:layout_marginTop="30dp"
+            android:id="@+id/save_settings_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:background="@color/colorPrimary"
+            android:text="Save Account Settings"
+            android:onClick="saveSettingsListener"
+            />
+    <Button
+        android:id="@+id/logout_btn"
+        android:textAllCaps="false"
+        android:text="Logout "
+        android:textColor="@color/white"
+        android:background="#F44336"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:onClick="logoutListener"
+        />
+</LinearLayout>
+
+</RelativeLayout>
