@@ -14,9 +14,9 @@ public class TrailStation {
 
     public TrailStation() {}
 
-    public TrailStation(String id,  String name, String instruction, String sequence, String trailId) {
+    public TrailStation(String id,  Location location, String name, String instruction, String sequence, String trailId) {
         this.id = id;
-        this.location = null;
+        this.location = location;
         this.name = name;
         this.instruction = instruction;
         this.sequence = sequence;

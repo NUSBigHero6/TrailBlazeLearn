@@ -37,7 +37,13 @@
                 <data android:scheme="@string/fb_login_protocol_scheme" />
             </intent-filter>
         </activity>
-        <activity android:name=".TrailBlazeMainActivity" />
+        <activity android:name=".TrailBlazeMainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".views.SetLearningTrailActivity" />
         <activity android:name=".views.ParticipantJoin" />
         <activity android:name=".views.LearningTrailMainActivity" >
@@ -66,13 +72,7 @@
         <activity android:name=".views.DiscussionThreadNewPostActivity" />
         <activity
             android:name=".views.ContributedItemMainActivity"
-            android:label="@string/title_activity_contributed_item_main">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:label="@string/title_activity_contributed_item_main" />
     </application>
 
 </manifest>

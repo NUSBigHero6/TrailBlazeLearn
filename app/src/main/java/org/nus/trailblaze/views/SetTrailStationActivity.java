@@ -113,8 +113,6 @@ public class SetTrailStationActivity extends AppCompatActivity implements View.O
                         place.getName().toString());
 
                 Log.i("Place", "Place: " + location.getName());
-                Log.d("Place lat!!!!",String.valueOf(location.getLatitude()));
-                Log.d("Place long!!!!",String.valueOf(location.getLongitude()));
             }
 
             @Override
@@ -130,7 +128,7 @@ public class SetTrailStationActivity extends AppCompatActivity implements View.O
         String stationInstrn = mInstrn.getText().toString();
         String stationSeq = mSeq.getText().toString();
 
-        trailStation = new TrailStation(documentID, stationName, stationInstrn, stationSeq, trailId);
+        trailStation = new TrailStation(documentID, location, stationName, stationInstrn, stationSeq, trailId);
         TrailStationDao trailStationDao = new TrailStationDao(SetTrailStationActivity.this, trailStation);
         trailStationDao.SaveTrailStation(documentID);
 

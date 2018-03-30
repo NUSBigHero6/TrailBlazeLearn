@@ -1,6 +1,7 @@
 package org.nus.trailblaze.model;
 
 import org.junit.Test;
+import org.nus.trailblaze.models.Location;
 import org.nus.trailblaze.models.TrailStation;
 
 import static junit.framework.Assert.assertEquals;
@@ -13,18 +14,21 @@ public class TestTrailStation {
             ", pronouncement; summons, writ, subpoena, warrant; informalsay-so; literarybehest; rare" +
             "rescript\"if a prisoner disobeys an instruction, he will be punished";
 
-    TrailStation trailStation1 = new TrailStation("id_321", "Park", instruction, "1", "180330-small walk");
+    Location location = new Location(1.2966426, 103.7763939, "NUS");
+
+    TrailStation trailStation1 = new TrailStation("180330095627", location, "Park", instruction,
+            "1", "180330-small walk");
 
     @Test
     public void testGetID() {
 
-        assertEquals("id_321", trailStation1.getId());
+        assertEquals("180330095627", trailStation1.getId());
     }
 
     @Test
     public void testGetLocation() {
 
-        assertEquals( null, trailStation1.getLocation());
+        assertEquals( location, trailStation1.getLocation());
     }
 
     @Test
