@@ -9,6 +9,14 @@ public class Location {
     private Float latitude;
     private String name;
 
+    public  Location(Float logitude,Float latitude,String name)
+    {
+        this.longitude=logitude;
+        this.latitude=latitude;
+        this.name=name;
+
+    }
+
     public Float getLongitude() {
         return longitude;
     }

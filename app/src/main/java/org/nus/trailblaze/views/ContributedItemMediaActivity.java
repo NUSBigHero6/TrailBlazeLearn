@@ -35,8 +35,10 @@ import org.nus.trailblaze.adapters.IntentHelper;
 import org.nus.trailblaze.dao.ContributedItemDao;
 import org.nus.trailblaze.models.Audio;
 import org.nus.trailblaze.models.ContributedItem;
+import org.nus.trailblaze.models.Location;
 import org.nus.trailblaze.models.Participant;
 import org.nus.trailblaze.models.TextDocument;
+import org.nus.trailblaze.models.TrailStation;
 
 import java.util.Date;
 
@@ -50,6 +52,8 @@ public class ContributedItemMediaActivity extends AppCompatActivity {
 
     Participant p= new Participant("PT1","Participant (Green)","Green@test.com");
     Audio ao= new Audio("Audio1","My Audio","",1.0f,new Date(),"P" );
+    String trailStationId="TrailStationId1";
+    String learningTrailId="learningTrailId123";
     ContributedItem ci;
 
     @Override
@@ -67,7 +71,7 @@ public class ContributedItemMediaActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 chooseFile();
-                ci= new ContributedItem("ContributedItem_5",p,new Date(),ao,editText_Desc.getText().toString());
+                ci= new ContributedItem("ContributedItem_5",p,new Date(),ao,editText_Desc.getText().toString(),trailStationId,learningTrailId);
             }
         });
 

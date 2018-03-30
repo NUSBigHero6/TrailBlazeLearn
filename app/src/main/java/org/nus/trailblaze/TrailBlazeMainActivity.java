@@ -11,7 +11,6 @@ import android.widget.Button;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookSdk;
 import com.facebook.login.LoginManager;
-import com.facebook.login.widget.LoginButton;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -28,8 +27,8 @@ import org.nus.trailblaze.listeners.SignInListener;
 import org.nus.trailblaze.dao.GoogleDao;
 import org.nus.trailblaze.views.ContributedItemDocActivity;
 import org.nus.trailblaze.views.ContributedItemImageActivity;
+import org.nus.trailblaze.views.ContributedItemMediaActivity;
 import org.nus.trailblaze.views.RoleToggler;
-import org.nus.trailblaze.views.TrailBlazaFeedActivity;
 
 import java.util.Arrays;
 
@@ -56,6 +55,8 @@ public class TrailBlazeMainActivity extends AppCompatActivity {
 
     private  Button btn_create_ContributedItem_Doc;
     private  Button btn_create_ContributedItem_Img;
+    private  Button btn_ContributedItemList;
+    private Button btn_create_ContributedItem_Media;
     @BindView(R.id.progressBar)
     ProgressBar bar;
 
@@ -85,6 +86,15 @@ public class TrailBlazeMainActivity extends AppCompatActivity {
             }
         });
 
+        btn_create_ContributedItem_Media=(Button)findViewById(R.id.btn_create_ContributedItem_Media);
+        btn_create_ContributedItem_Media.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), ContributedItemMediaActivity.class));
+            }
+        });
+
+        btn_ContributedItemList=(Button)findViewById(R.id.btn_ContributedItemList);
         // CallbackManager to initalize the Facebook button
         fmanager = LoginManager.getInstance();
         mCallback = CallbackManager.Factory.create();

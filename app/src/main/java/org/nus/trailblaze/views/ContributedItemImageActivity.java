@@ -35,9 +35,11 @@ import org.nus.trailblaze.adapters.FileHelper;
 import org.nus.trailblaze.adapters.IntentHelper;
 import org.nus.trailblaze.dao.ContributedItemDao;
 import org.nus.trailblaze.models.ContributedItem;
+import org.nus.trailblaze.models.Location;
 import org.nus.trailblaze.models.Participant;
 import org.nus.trailblaze.models.Photo;
 import org.nus.trailblaze.models.TextDocument;
+import org.nus.trailblaze.models.TrailStation;
 
 import java.io.IOException;
 import java.util.Date;
@@ -51,6 +53,8 @@ public class ContributedItemImageActivity extends AppCompatActivity {
     private Uri filePath;
     Participant p= new Participant("PT1","Participant (Green)","Green@test.com");
     Photo po= new Photo("Photo1","My Photo","",1.0f,new Date(),"" );
+    String trailStationId="TrailStationId1";
+    String learningTrailId="learingTrailId1";
     ContributedItem ci;
     private final int PICK_IMAGE_REQUEST = 71;
     @Override
@@ -68,7 +72,7 @@ public class ContributedItemImageActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 chooseImage();
-                ci= new ContributedItem("ContributedItem_3",p,new Date(),po,editText_Desc.getText().toString());
+                ci= new ContributedItem("ContributedItem_3",p,new Date(),po,editText_Desc.getText().toString(),trailStationId,learningTrailId);
             }
         });
         btnSave.setOnClickListener(new View.OnClickListener() {
