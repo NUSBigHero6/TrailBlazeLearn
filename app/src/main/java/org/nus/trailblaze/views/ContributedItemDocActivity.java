@@ -51,7 +51,7 @@ public class ContributedItemDocActivity extends AppCompatActivity  {
     private TextView textView_Comment;
     //Get Participant from context
     Participant p= new Participant("PT1","Participant (Green)","Green@test.com");
-    TextDocument td= new TextDocument("Doc1","Document (PDF/Text)","Test@Url",1.0f,new Date(),"PDF/TXT" );
+    TextDocument td= new TextDocument(UUID.randomUUID().toString(),"Document (PDF/Text)","Test@Url",1.0f,new Date(),"PDF/TXT" );
 
     String trailStationId="TrailStationId1";
     String learingTrailId="LearningTrailId1";
@@ -74,7 +74,7 @@ public class ContributedItemDocActivity extends AppCompatActivity  {
             @Override
             public void onClick(View v) {
                 chooseFile();
-                ci= new ContributedItem("ContributedItem_7",p,new Date(),td,
+                ci= new ContributedItem(UUID.randomUUID().toString(),p,new Date(),td,
                         editText_Description.getText().toString(),trailStationId,learingTrailId);
 
             }
@@ -85,9 +85,8 @@ public class ContributedItemDocActivity extends AppCompatActivity  {
             public void onClick(View v) {
                 ContributedItemDao ciDao= new ContributedItemDao(ContributedItemDocActivity.this,ci);
                 ciDao.SaveContributedItem(filePath,"document");
-                //Return trail station page
-                startActivity(new Intent(getApplicationContext(), ContributedItemMainActivity.class));
-                finish();
+
+
             }
         });
     }

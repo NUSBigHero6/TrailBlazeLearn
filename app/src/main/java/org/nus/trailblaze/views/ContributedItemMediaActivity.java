@@ -41,6 +41,7 @@ import org.nus.trailblaze.models.TextDocument;
 import org.nus.trailblaze.models.TrailStation;
 
 import java.util.Date;
+import java.util.UUID;
 
 public class ContributedItemMediaActivity extends AppCompatActivity {
     private Button btnUploadAudio;
@@ -51,7 +52,7 @@ public class ContributedItemMediaActivity extends AppCompatActivity {
     private TextView textView_Comment;
 
     Participant p= new Participant("PT1","Participant (Green)","Green@test.com");
-    Audio ao= new Audio("Audio1","My Audio","",1.0f,new Date(),"P" );
+    Audio ao= new Audio(UUID.randomUUID().toString(),"My Audio","",1.0f,new Date(),"P" );
     String trailStationId="TrailStationId1";
     String learningTrailId="learningTrailId123";
     ContributedItem ci;
@@ -71,7 +72,7 @@ public class ContributedItemMediaActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 chooseFile();
-                ci= new ContributedItem("ContributedItem_5",p,new Date(),ao,editText_Desc.getText().toString(),trailStationId,learningTrailId);
+                ci= new ContributedItem(UUID.randomUUID().toString(),p,new Date(),ao,editText_Desc.getText().toString(),trailStationId,learningTrailId);
             }
         });
 
@@ -80,9 +81,7 @@ public class ContributedItemMediaActivity extends AppCompatActivity {
             public void onClick(View v) {
                 ContributedItemDao ciDao= new ContributedItemDao(ContributedItemMediaActivity.this,ci);
                 ciDao.SaveContributedItem(filePath,"audio");
-                //Return trail station page
-                startActivity(new Intent(getApplicationContext(), ContributedItemMainActivity.class));
-                finish();
+
             }
         });
     }

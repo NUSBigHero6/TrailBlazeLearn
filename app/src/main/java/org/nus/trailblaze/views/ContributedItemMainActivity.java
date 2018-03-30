@@ -22,6 +22,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import org.nus.trailblaze.R;
 import org.nus.trailblaze.fragments.FeedFragment;
 import org.nus.trailblaze.models.ContributedItem;
+import org.nus.trailblaze.models.User;
 
 import java.util.Date;
 
@@ -33,6 +34,9 @@ public class ContributedItemMainActivity  extends FragmentActivity
 
     private Toolbar itemToolbar;
     private FirebaseAuth firebaseAuth;
+    private User user;
+    private String trailStationId;
+    private  String learningTailId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +56,6 @@ public class ContributedItemMainActivity  extends FragmentActivity
         feedFragment = new FeedFragment();
 
         replaceFragment(feedFragment);
-
     }
     //Handle Bottom navigation menu clicks
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener

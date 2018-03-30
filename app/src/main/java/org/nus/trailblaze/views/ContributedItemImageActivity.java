@@ -52,7 +52,7 @@ public class ContributedItemImageActivity extends AppCompatActivity {
     private  EditText editText_Desc;
     private Uri filePath;
     Participant p= new Participant("PT1","Participant (Green)","Green@test.com");
-    Photo po= new Photo("Photo1","My Photo","",1.0f,new Date(),"" );
+    Photo po= new Photo(UUID.randomUUID().toString(),"My Photo","",1.0f,new Date(),"" );
     String trailStationId="TrailStationId1";
     String learningTrailId="learingTrailId1";
     ContributedItem ci;
@@ -72,7 +72,7 @@ public class ContributedItemImageActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 chooseImage();
-                ci= new ContributedItem("ContributedItem_3",p,new Date(),po,editText_Desc.getText().toString(),trailStationId,learningTrailId);
+                ci= new ContributedItem(UUID.randomUUID().toString(),p,new Date(),po,editText_Desc.getText().toString(),trailStationId,learningTrailId);
             }
         });
         btnSave.setOnClickListener(new View.OnClickListener() {
@@ -80,9 +80,8 @@ public class ContributedItemImageActivity extends AppCompatActivity {
             public void onClick(View v) {
                 ContributedItemDao ciDao= new ContributedItemDao(ContributedItemImageActivity.this,ci);
                 ciDao.SaveContributedItem(filePath,"image");
-                //Return trail station page
-                startActivity(new Intent(getApplicationContext(), ContributedItemMainActivity.class));
-                finish();
+
+
             }
         });
     }
