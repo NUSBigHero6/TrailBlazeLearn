@@ -19,7 +19,7 @@ import butterknife.ButterKnife;
 
 public class RoleToggler extends AppCompatActivity {
 
-    private static final Class backToHome = TrailBlazeMainActivity.class;
+    public static final Class backToHome = TrailBlazeMainActivity.class;
     private static final Class trainerView = LearningTrailMainActivity.class;
     private static final Class participantView = ParticipantJoin.class;
 

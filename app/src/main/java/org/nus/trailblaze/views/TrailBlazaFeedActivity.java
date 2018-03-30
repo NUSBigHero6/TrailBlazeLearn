@@ -20,15 +20,12 @@ public class TrailBlazaFeedActivity extends FragmentActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.d("Test", "onCreate");
         setContentView(R.layout.trail_blaze_feed);
 
     }
 
     @Override
     public void passItem(ContributedItem item) {
-        Log.d("ACTIVITY", item.getFile().getMimeType());
-
         Intent myIntent;
 
         if(item.getFile().getMimeType().indexOf("audio") > -1){
