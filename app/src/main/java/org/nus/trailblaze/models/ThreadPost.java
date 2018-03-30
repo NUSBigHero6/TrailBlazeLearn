@@ -7,11 +7,8 @@ import java.util.Date;
  */
 
 public class ThreadPost {
-    private String id;
+    private String id, message, url, userId;
     private Date createdDate;
-    private String message;
-    private String url;
-    private String userId;
 
     ThreadPost(){}
 

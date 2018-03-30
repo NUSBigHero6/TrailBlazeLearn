@@ -20,15 +20,17 @@
         android:layout_height="match_parent"
         android:layout_below="@+id/linearLayout2"
         android:layout_centerHorizontal="true" />
+
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/floatingActionButton"
+        android:id="@+id/goto_add_post"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         android:layout_marginBottom="20dp"
-        android:layout_marginEnd="24dp"
+        android:layout_marginEnd="26dp"
         android:clickable="true"
-        app:srcCompat="@android:drawable/ic_input_add" />
+        android:onClick="gotoAddPostClickListener"
+        app:srcCompat="@drawable/ic_action_plus" />
 
 </RelativeLayout>

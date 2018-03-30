@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 
 import org.nus.trailblaze.R;
+import org.nus.trailblaze.fragments.FeedFragment;
 import org.nus.trailblaze.models.ContributedItem;
 
 /**

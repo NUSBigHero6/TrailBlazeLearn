@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/menu_docs"
+        android:icon="@drawable/ic_action_doc"
+        android:title="@string/title_doc" />
+
+    <item
+        android:id="@+id/menu_photos"
+        android:icon="@drawable/ic_action_photo"
+        android:title="@string/title_photos" />
+    <item
+        android:id="@+id/menu_audio"
+        android:icon="@drawable/ic_action_audio"
+        android:title="@string/title_audio" />
+
+</menu>

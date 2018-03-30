@@ -65,7 +65,7 @@ public class TrailBlazeItemViewerActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case android.R.id.home:
 
-                Intent intent = new Intent(TrailBlazeItemViewerActivity.this, TrailBlazaFeedActivity.class);
+                Intent intent = new Intent(TrailBlazeItemViewerActivity.this, ContributedItemMainActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
                 finish();

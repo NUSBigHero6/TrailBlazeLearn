@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     tools:context="org.nus.trailblaze.views.ViewTrialStationActivity">
 
-    <fragment android:name="org.nus.trailblaze.views.FeedFragment"
+    <fragment android:name="org.nus.trailblaze.fragments.FeedFragment"
         android:id="@+id/feed_fragment"
 
         android:layout_width="match_parent"

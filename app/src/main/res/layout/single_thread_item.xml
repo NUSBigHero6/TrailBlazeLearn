@@ -21,7 +21,7 @@
                 android:id="@+id/thread_user_image"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:background="@color/colorAccent" />
+                android:background="#c6c4c4" />
 
             <LinearLayout
                 android:layout_width="match_parent"

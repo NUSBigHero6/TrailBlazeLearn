@@ -107,7 +107,7 @@ public class AudioPlayerActivity extends AppCompatActivity
 
                 progressDialog.dismiss();
 
-                Intent intent = new Intent(AudioPlayerActivity.this, TrailBlazaFeedActivity.class);
+                Intent intent = new Intent(AudioPlayerActivity.this, ContributedItemMainActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
                 finish();

@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="org.nus.trailblaze.views.FeedFragment">
+    tools:context="org.nus.trailblaze.fragments.FeedFragment">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/tb_feed_view"

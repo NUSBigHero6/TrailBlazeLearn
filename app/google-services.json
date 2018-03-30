@@ -15,6 +15,22 @@
       },
       "oauth_client": [
         {
+          "client_id": "521102015172-5l9pnm9gqbt6g5df5edau1tdno1tnq76.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "org.nus.trailblaze",
+            "certificate_hash": "04843318c28fb7eac52baf2b0f37027ed0d821ed"
+          }
+        },
+        {
+          "client_id": "521102015172-buhcr1stmkii87ljp7u5lmkua9q95dk9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "org.nus.trailblaze",
+            "certificate_hash": "1c04989b2e59661e6c2f8a6cde83fd7966a39377"
+          }
+        },
+        {
           "client_id": "521102015172-h6vshd68mi7oojbo1qt6ajhs0bm4q36a.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

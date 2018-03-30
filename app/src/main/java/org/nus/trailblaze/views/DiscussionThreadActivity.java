@@ -1,6 +1,7 @@
 package org.nus.trailblaze.views;
 //Author : Priyanka Jalan
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -44,9 +45,10 @@ public class DiscussionThreadActivity extends AppCompatActivity {
         setContentView(R.layout.activity_discussion_thread);
 
         //Thread Toolbar
-        Toolbar setupToolbar = findViewById(R.id.threadToolbar);
-        setupToolbar.setTitle("Discussion Thread");
-        setupToolbar.setSubtitle("Semakau-2017");
+        Toolbar threadToolbar = findViewById(R.id.threadToolbar);
+        setSupportActionBar(threadToolbar);
+        getSupportActionBar().setTitle("Discussion Thread");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         threadListView = findViewById(R.id.threadListView);
         threadList = new ArrayList<>();
@@ -70,6 +72,12 @@ public class DiscussionThreadActivity extends AppCompatActivity {
                      }
             }
         });
+    }
+
+    public void gotoAddPostClickListener(View view){
+        Intent addPostIntent = new Intent(DiscussionThreadActivity.this,DiscussionThreadNewPostActivity.class);
+        startActivity(addPostIntent);
+        finish();
     }
 
 }
