@@ -81,7 +81,8 @@ public class ContributedItemMediaActivity extends AppCompatActivity {
                 ContributedItemDao ciDao= new ContributedItemDao(ContributedItemMediaActivity.this,ci);
                 ciDao.SaveContributedItem(filePath,"audio");
                 //Return trail station page
-                //startActivity(new Intent(getApplicationContext(), TrailStationActivity.class));
+                startActivity(new Intent(getApplicationContext(), ContributedItemMainActivity.class));
+                finish();
             }
         });
     }

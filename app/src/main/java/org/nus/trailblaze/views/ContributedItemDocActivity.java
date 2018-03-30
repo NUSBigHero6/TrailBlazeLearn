@@ -86,7 +86,8 @@ public class ContributedItemDocActivity extends AppCompatActivity  {
                 ContributedItemDao ciDao= new ContributedItemDao(ContributedItemDocActivity.this,ci);
                 ciDao.SaveContributedItem(filePath,"document");
                 //Return trail station page
-                //startActivity(new Intent(getApplicationContext(), TrailStationActivity.class));
+                startActivity(new Intent(getApplicationContext(), ContributedItemMainActivity.class));
+                finish();
             }
         });
     }

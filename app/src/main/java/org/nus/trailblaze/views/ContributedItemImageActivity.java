@@ -81,7 +81,8 @@ public class ContributedItemImageActivity extends AppCompatActivity {
                 ContributedItemDao ciDao= new ContributedItemDao(ContributedItemImageActivity.this,ci);
                 ciDao.SaveContributedItem(filePath,"image");
                 //Return trail station page
-                //startActivity(new Intent(getApplicationContext(), TrailStationActivity.class));
+                startActivity(new Intent(getApplicationContext(), ContributedItemMainActivity.class));
+                finish();
             }
         });
     }
