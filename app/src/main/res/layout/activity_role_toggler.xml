@@ -4,8 +4,31 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="org.nus.trailblaze.views.RoleToggler"
-    android:background="@color/white">
+    android:background="@color/white"
+    tools:context="org.nus.trailblaze.views.RoleToggler">
+
+    <TextView
+        android:id="@+id/usernameDisplay"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_gravity="center_vertical|center"
+        android:layout_marginTop="100dp"
+        android:gravity="center_horizontal"
+        android:text="Username"
+        android:textColor="@color/colorPrimary"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/userEmailDisplay"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginTop="130dp"
+        android:gravity="center_horizontal"
+        android:text="Email"
+        android:textColor="@color/colorPrimary"
+        android:textSize="14sp"
+        android:textStyle="bold" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -50,5 +73,20 @@
             android:textStyle="bold" />
     </LinearLayout>
 
+    <Button
+        android:id="@+id/logout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="end"
+        android:layout_marginBottom="30dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@color/logout"
+        android:onClick="onLogout"
+        android:text="Logout"
+        android:textColor="@color/white"
+        android:textStyle="bold" />
 
 </RelativeLayout>

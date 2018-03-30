@@ -35,8 +35,12 @@ public class SetLearningTrailActivity extends AppCompatActivity implements View.
     private EditText et;
     private Button btn;
     private String ymd;
-    private static final String NAME = "name";
+    public static final String NAME = "name";
     private static final String COLLECTION = "trails";
+    public final static String DOCUMENTID ="org.nus.trailblaze.docID";
+    public final static String NAMEVALUE = "org.nus.trailblaze.nameID";
+    private String documentID;
+    private String nameValue;
 
     Map<String, Object> trailDataMap = new HashMap<>();
 
@@ -50,6 +54,15 @@ public class SetLearningTrailActivity extends AppCompatActivity implements View.
         btn = (Button) findViewById(R.id.newTrail);
         btn.setOnClickListener(this);
         et = (EditText) findViewById(R.id.trailCode);
+        Intent intent = getIntent();
+        Bundle bundle = intent.getExtras();
+        nameValue = bundle.getString(NAMEVALUE);
+        documentID = bundle.getString(DOCUMENTID);
+
+        if (nameValue != null) {
+            nameValue = nameValue.substring(nameValue.lastIndexOf("-") + 1);
+            et.setText(nameValue);
+        }
 
         Date date = new Date();
         String day          = (String) DateFormat.format("dd", date);
@@ -89,7 +102,7 @@ public class SetLearningTrailActivity extends AppCompatActivity implements View.
             Toast.makeText(SetLearningTrailActivity.this, "Please enter a Trail Code",
                     Toast.LENGTH_SHORT).show();
         }
-        else {
+        else if (documentID == null) {
             db.collection(COLLECTION).document().set(trailDataMap)
 
                     .addOnSuccessListener(new OnSuccessListener<Void>() {

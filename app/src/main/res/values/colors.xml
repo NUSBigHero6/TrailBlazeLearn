@@ -6,4 +6,5 @@
     <color name="white">#FFF</color>
     <color name="trainer">#24d674</color>
     <color name="participant">#834b14</color>
+    <color name="logout">#634242</color>
 </resources>

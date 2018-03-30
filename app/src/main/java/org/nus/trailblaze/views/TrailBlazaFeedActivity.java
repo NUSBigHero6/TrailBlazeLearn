@@ -1,6 +1,7 @@
 package org.nus.trailblaze.views;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.os.Bundle;
@@ -49,7 +50,7 @@ public class TrailBlazaFeedActivity extends Activity
     }
 
     private void loadItemsList() {
-        Query query = firestoreDB.collection("contributeditems");
+        Query query = firestoreDB.collection("contributed_items");
 
         FirestoreRecyclerOptions<ContributedItem> response = new FirestoreRecyclerOptions.Builder<ContributedItem>()
                 .setQuery(query, ContributedItem.class)
@@ -79,7 +80,7 @@ public class TrailBlazaFeedActivity extends Activity
         Log.d("ACTIVITY", item.getFile().getMimeType());
 
         //temporary comment
-        /*Intent myIntent;
+        Intent myIntent;
 
         if(item.getFile().getMimeType().indexOf("audio") > -1){
             myIntent = new Intent(TrailBlazaFeedActivity.this,
@@ -95,6 +96,6 @@ public class TrailBlazaFeedActivity extends Activity
         startActivity(myIntent);
         // Following the documentation, right after starting the activity
         // we override the transition
-        overridePendingTransition(R.anim.activity_in, R.anim.activity_out);*/
+        overridePendingTransition(R.anim.activity_in, R.anim.activity_out);
     }
 }

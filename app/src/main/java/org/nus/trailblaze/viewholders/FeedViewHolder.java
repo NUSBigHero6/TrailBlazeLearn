@@ -2,6 +2,7 @@ package org.nus.trailblaze.viewholders;
 
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.view.View;
@@ -34,7 +35,6 @@ public class FeedViewHolder extends RecyclerView.ViewHolder
     public void bind(ContributedItem item) {
         tbParticipantName.setText(item.getDescription());
         tbFeedIcon.setImageResource(getIconId(item.getFile().getMimeType()));
-
     }
 
     public void onClick(View view) {
@@ -61,8 +61,8 @@ public class FeedViewHolder extends RecyclerView.ViewHolder
             case "text/plain":
                 iconId = R.drawable.ic_text_format_black_24dp;
                 break;
-            case "audio/mpeg3":
-                iconId = R.drawable.ic_play_circle_filled_black_24dp;
+            case "audio/mpeg":
+                iconId = R.drawable.ic_audiotrack_black_24dp;
                 break;
         }
 

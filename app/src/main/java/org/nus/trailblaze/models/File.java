@@ -90,6 +90,7 @@ public class File implements Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(getMimeType());
         dest.writeString(getUrl());
+        dest.writeString(getName());
     }
 
     /**
@@ -100,6 +101,7 @@ public class File implements Parcelable {
     private File(Parcel in){
         this.setMimeType(in.readString());
         this.setUrl(in.readString());
+        this.setName(in.readString());
     }
 
     public static final Parcelable.Creator<File> CREATOR = new Parcelable.Creator<File>() {
