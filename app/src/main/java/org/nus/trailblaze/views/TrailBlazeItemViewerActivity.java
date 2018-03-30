@@ -26,6 +26,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
 import org.nus.trailblaze.R;
+import org.nus.trailblaze.models.Trainer;
 import org.nus.trailblaze.tasks.AsyncTaskReadTextFile;
 import org.nus.trailblaze.models.ContributedItem;
 
@@ -39,6 +40,8 @@ public class TrailBlazeItemViewerActivity extends AppCompatActivity {
     private ImageView ivItemImage;
     private VideoView vvItemVideo;
     private PDFView pdfView;
+    private String userMode;
+    private ContributedItem contributedItem;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,8 +58,10 @@ public class TrailBlazeItemViewerActivity extends AppCompatActivity {
         pdfView = (PDFView) findViewById(R.id.pdfView);
 
         // To retrieve object in second Activity
-        ContributedItem item = (ContributedItem) getIntent().getParcelableExtra("Item");
-        renderContent(item);
+        contributedItem = (ContributedItem) getIntent().getParcelableExtra("Item");
+        userMode = (String) getIntent().getExtras().get("userMode");
+
+        renderContent(contributedItem);
 
     }
 
@@ -64,8 +69,15 @@ public class TrailBlazeItemViewerActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
+                Class c = ContributedItemMainActivity.class;
+                if(userMode.equals("trainer")) {
+                    c = TrailBlazaFeedActivity.class;
 
-                Intent intent = new Intent(TrailBlazeItemViewerActivity.this, ContributedItemMainActivity.class);
+                }
+                Intent intent = new Intent(TrailBlazeItemViewerActivity.this, c);
+                intent.putExtra("trailID", contributedItem.getLearningTrailId());
+                intent.putExtra("userMode", userMode);
+
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
                 finish();

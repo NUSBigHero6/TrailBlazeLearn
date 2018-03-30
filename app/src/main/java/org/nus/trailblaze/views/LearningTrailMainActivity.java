@@ -60,9 +60,9 @@ public class LearningTrailMainActivity extends AppCompatActivity implements List
         btnAddLearningTrail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(LearningTrailMainActivity.this, SetLearningTrailActivity.class);
-                intent.putExtra("trainer", Trainer.fromUser(LearningTrailMainActivity.this.trainer));
-                startActivity(intent);
+            Intent intent = new Intent(LearningTrailMainActivity.this, SetLearningTrailActivity.class);
+            intent.putExtra("trainer", Trainer.fromUser(LearningTrailMainActivity.this.trainer));
+            startActivity(intent);
             }
         });
 
@@ -131,10 +131,11 @@ public class LearningTrailMainActivity extends AppCompatActivity implements List
     @Override
     public void onListItemClick(int position) {
         LearningTrail item = (LearningTrail) adapter.getItem(position);
-        Intent intent = new Intent(this, TrailStationMainActivity.class);
+        Log.d("item clicked!!",String.valueOf(item));
+        Intent intent = new Intent(this, TrailBlazaFeedActivity.class);
         intent.putExtra("trailID", item.getName().toString());
         intent.putExtra("userMode", "trainer");
-        intent.putExtra("trainer", Trainer.fromUser(this.trainer));
+        intent.putExtra("user", Trainer.fromUser(this.trainer));
         startActivity(intent);
 
     }
