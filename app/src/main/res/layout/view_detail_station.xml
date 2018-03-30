@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <include
+            android:id="@+id/viewToolbar"
+            layout="@layout/toolbar" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="70dp"
+        android:padding="10dp">
+
+        <LinearLayout
+            android:id="@+id/location_row"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="10dp"
+            android:paddingLeft="8dp">
+
+            <TextView
+                android:id="@+id/location"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Station location"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/stn_location"
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="location" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_below="@+id/location_row"
+            android:orientation="vertical"
+            android:paddingLeft="8dp">
+
+            <TextView
+                android:id="@+id/instrn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Instructions"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/stn_instrn"
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Instruction here" />
+        </LinearLayout>
+
+        <Button
+        android:id="@+id/btnGotoDiscThread"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="30dp"
+        android:background="@color/colorAccent"
+        android:textColor="@color/white"
+        android:textAllCaps="false"
+        android:textSize="18dp"
+        android:text="Go to Discussion Thread" />
+    </RelativeLayout>
+</RelativeLayout>

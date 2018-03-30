@@ -4,6 +4,7 @@ package org.nus.trailblaze.views;
         import android.app.Activity;
         import android.content.Intent;
         import android.os.Bundle;
+        import android.support.v7.app.AppCompatActivity;
         import android.support.v7.widget.LinearLayoutManager;
         import android.support.v7.widget.RecyclerView;
         import android.support.v7.widget.Toolbar;
@@ -23,7 +24,6 @@ package org.nus.trailblaze.views;
 
         import org.nus.trailblaze.R;
         import org.nus.trailblaze.TrailBlazeMainActivity;
-        import org.nus.trailblaze.adapters.LearningTrailFirestoreAdaptor;
         import org.nus.trailblaze.adapters.TrailStationFirestoreAdapter;
         import org.nus.trailblaze.listeners.ListItemClickListener;
         import org.nus.trailblaze.models.Participant;
@@ -35,7 +35,7 @@ package org.nus.trailblaze.views;
  * Created by AswathyLeelakumari on 24/3/2018.
  */
 
-public class TrailStationMainActivity extends Activity implements ListItemClickListener {
+public class TrailStationMainActivity extends AppCompatActivity implements ListItemClickListener {
 
     private static final String TAG = "TrailStationMainActivity";
     private static final Class setStationView = SetTrailStationActivity.class;
@@ -86,6 +86,7 @@ public class TrailStationMainActivity extends Activity implements ListItemClickL
         if (userMode.equals("trainer"))
         {
             mBtnAddStation.setVisibility(View.VISIBLE); //SHOW the button
+
         }
 
         // use this setting to improve performance if you know that changes
@@ -100,10 +101,9 @@ public class TrailStationMainActivity extends Activity implements ListItemClickL
 
         //Account Settings Toolbar
         Toolbar trailToolbar = (Toolbar) findViewById(R.id.trailToolbar);
-        trailToolbar.setTitle(trailID);
-        //setSupportActionBar(trailToolbar);
-        // getSupportActionBar().setTitle(trailID);
-        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        setSupportActionBar(trailToolbar);
+        getSupportActionBar().setTitle(trailID);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         loadTrialStations();
 
@@ -148,9 +148,16 @@ public class TrailStationMainActivity extends Activity implements ListItemClickL
     @Override
     public void onListItemClick(int position) {
         TrailStation item = (TrailStation) adapter.getItem(position);
-        Log.d("stations activity", item.getName());
+        Class intentClass = ViewDetailStationActivity.class;
+
         Intent intent = new Intent(getApplicationContext(), DiscussionThreadActivity.class);
+        if (userMode.equals("participant")) {
+            intent = new Intent(getApplicationContext(), ViewDetailStationActivity.class);
+            intent.putExtra("location",item.getLocation().getName());
+            intent.putExtra("instructions",item.getInstruction());
+        }
         intent.putExtra("trailID", trailID);
+        intent.putExtra("stationID",item.getId());
         startActivity(intent);
     }
 

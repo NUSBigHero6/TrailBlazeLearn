@@ -10,9 +10,9 @@ public class ThreadPost {
     private String id, message, url, userId;
     private Date createdDate;
 
-    ThreadPost(){}
+    public ThreadPost(){}
 
-    ThreadPost(String id, Date createdDate, String message, String url, String userId){
+    public ThreadPost(String id, Date createdDate, String message, String url, String userId){
         this.id = id;
         this.createdDate = createdDate;
         this.message = message;
@@ -47,6 +47,9 @@ public class ThreadPost {
     public void setUrl(String url) {
         this.url = url;
     }
+
+//    public String getStationId() { return stationId; }
+//    public void setStationId() { this.stationId = stationId; }
 
     public String getUserId() {
         return userId;

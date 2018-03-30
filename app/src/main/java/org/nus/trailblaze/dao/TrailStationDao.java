@@ -11,6 +11,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import org.nus.trailblaze.models.TrailStation;
 import org.nus.trailblaze.models.Trainer;
@@ -57,5 +58,10 @@ public class TrailStationDao {
 
     public Task<Void> deleteStation(String documentID){
         return this.ref.document(documentID).delete();
+    }
+
+
+    public Task<QuerySnapshot> getStationById(String stnid){
+        return  this.ref.whereEqualTo("id", stnid).get();
     }
 }

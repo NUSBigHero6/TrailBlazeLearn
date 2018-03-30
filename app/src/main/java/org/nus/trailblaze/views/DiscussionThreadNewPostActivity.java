@@ -111,6 +111,7 @@ public class DiscussionThreadNewPostActivity extends AppCompatActivity {
         final String message = threadPostMessage.getText().toString();
         if(!TextUtils.isEmpty(message) && postImageUri != null){
             //Start Uploading to Storage
+            final String postId = UUID.randomUUID().toString();
             String randomName = UUID.randomUUID().toString();
             StorageReference filePath = storageReference.child("post_images").child(randomName + ".jpg");
             filePath.putFile(postImageUri).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
@@ -119,25 +120,27 @@ public class DiscussionThreadNewPostActivity extends AppCompatActivity {
                     if(task.isSuccessful()){
                         //Store In Firestore
                         String downloadUri = task.getResult().getDownloadUrl().toString();
+
                         Map<String, Object> postMap = new HashMap<>();
+                        postMap.put("id",postId);
                         postMap.put("url",downloadUri);
                         postMap.put("message",message);
                         postMap.put("createdDate",FieldValue.serverTimestamp());
                         postMap.put("userId","C0HJXoLJhyQWio5ybV8b9SfsU0J3");
-                        Log.i("Post Hashmap",postMap.toString());
-                        firebaseFirestore.collection("discussion_threads").add(postMap).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
+
+                        firebaseFirestore.collection("discussion_threads").document("48mgr5JTsjwrryuIXQMB").collection("posts").add(postMap).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
                             @Override
                             public void onComplete(@NonNull Task<DocumentReference> task) {
                                 if(task.isSuccessful()){
-                                    showToastMessage("Post was added");
                                     Intent discussionThreadIntent = new Intent(DiscussionThreadNewPostActivity.this, DiscussionThreadActivity.class);
                                     startActivity(discussionThreadIntent);
                                     finish();
                                 }else{
-                                    showToastMessage("Post Add Failed");
+                                    showToastMessage("Post add failed");
                                 }
                             }
                         });
+
                     }else{
                         showToastMessage("Image Upload Failed");
                     }

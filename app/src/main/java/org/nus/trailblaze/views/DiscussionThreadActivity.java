@@ -8,6 +8,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -59,7 +60,7 @@ public class DiscussionThreadActivity extends AppCompatActivity {
 
         firebaseFirestore = FirebaseFirestore.getInstance();
 
-         firebaseFirestore.collection("discussion_threads").addSnapshotListener(new EventListener<QuerySnapshot>() {
+         firebaseFirestore.collection("discussion_threads").document("48mgr5JTsjwrryuIXQMB").collection("posts").addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
             public void onEvent(QuerySnapshot documentSnapshots, FirebaseFirestoreException e) {
                      for(DocumentChange doc: documentSnapshots.getDocumentChanges()){
@@ -78,6 +79,14 @@ public class DiscussionThreadActivity extends AppCompatActivity {
         Intent addPostIntent = new Intent(DiscussionThreadActivity.this,DiscussionThreadNewPostActivity.class);
         startActivity(addPostIntent);
         finish();
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        Intent intent = new Intent(DiscussionThreadActivity.this, ContributedItemMainActivity.class);
+        startActivity(intent);
+        finish();
+        return true;
     }
 
 }
