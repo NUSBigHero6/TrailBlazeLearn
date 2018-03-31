@@ -24,6 +24,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -120,21 +121,24 @@ public class DiscussionThreadNewPostActivity extends AppCompatActivity {
                     if(task.isSuccessful()){
                         //Store In Firestore
                         String downloadUri = task.getResult().getDownloadUrl().toString();
+                        final String stationID = getIntent().getStringExtra("stationID");
+
 
                         Map<String, Object> postMap = new HashMap<>();
                         postMap.put("id",postId);
+                        postMap.put("stationID",stationID);
                         postMap.put("url",downloadUri);
                         postMap.put("message",message);
                         postMap.put("createdDate",FieldValue.serverTimestamp());
                         postMap.put("userId","C0HJXoLJhyQWio5ybV8b9SfsU0J3");
 
-                        firebaseFirestore.collection("discussion_threads").document("48mgr5JTsjwrryuIXQMB").collection("posts").add(postMap).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
+                        firebaseFirestore.collection("discussion_threads").document(stationID + "_thread").collection("posts").add(postMap).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
                             @Override
                             public void onComplete(@NonNull Task<DocumentReference> task) {
                                 if(task.isSuccessful()){
                                     Intent discussionThreadIntent = new Intent(DiscussionThreadNewPostActivity.this, DiscussionThreadActivity.class);
+                                    discussionThreadIntent.putExtra("stationID",stationID);
                                     startActivity(discussionThreadIntent);
-                                    finish();
                                 }else{
                                     showToastMessage("Post add failed");
                                 }

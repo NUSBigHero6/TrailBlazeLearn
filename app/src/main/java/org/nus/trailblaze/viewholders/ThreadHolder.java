@@ -15,7 +15,8 @@ import android.widget.Toast;
 
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.RequestOptions;
+//import com.bumptech.glide.annotation.GlideModule;
+//import com.bumptech.glide.request.RequestOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentReference;
@@ -26,6 +27,7 @@ import org.nus.trailblaze.R;
 import org.nus.trailblaze.models.File;
 import org.nus.trailblaze.models.Post;
 import org.nus.trailblaze.models.ThreadPost;
+import org.nus.trailblaze.views.DiscussionThreadActivity;
 
 import java.util.Date;
 import java.util.List;
@@ -35,7 +37,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 /**
  * Created by priyanka on 30/3/2018.
  */
-
+//@GlideModule
 public class ThreadHolder extends RecyclerView.Adapter<ThreadHolder.ViewHolder> {
 
     public List<ThreadPost> threadList;
@@ -110,7 +112,10 @@ public class ThreadHolder extends RecyclerView.Adapter<ThreadHolder.ViewHolder> 
 
         public void setThreadImage(String downloadUri){
             threadImageView = myView.findViewById(R.id.thread_post_image);
-//            Glide.with(context).load(downloadUri).into(threadImageView);
+            // Load the image using Glide
+//            Glide.with(context)
+//                    .load(downloadUri)
+//                    .into(threadImageView);
         }
 
         public void setCreatedDate(String createdDate){
@@ -118,12 +123,13 @@ public class ThreadHolder extends RecyclerView.Adapter<ThreadHolder.ViewHolder> 
             threadCreatedDate.setText(createdDate);
         }
 
-        public void setUserData(String name, String image){
+        public void setUserData(String name, String userImageUrl){
 
             threadUserName = myView.findViewById(R.id.thread_user_name);
-//            threadUserImage = myView.findViewById(R.id.thread_user_image);
+            threadUserImage = myView.findViewById(R.id.thread_user_image);
 
             threadUserName.setText(name);
+
 
 //            Glide.with(context).applyDefaultRequestOptions(placeholderOption).load(image).into(blogUserImage);
 
