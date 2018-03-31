@@ -19,28 +19,24 @@
 
         <TextView
             android:id="@+id/station_name"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/btnUpdateOptions"
-            android:layout_alignBottom="@+id/btnUpdateOptions"
-            android:layout_alignParentStart="true"
-            android:layout_marginStart="59dp"
-            android:gravity="center"
-            android:text="TextView"
-            android:textSize="18sp" />
+            android:layout_toLeftOf="@+id/btnOptions"
+            android:layout_toStartOf="@+id/btnOptions"
+            android:layout_weight="1"
+            android:padding="10dp"
+            android:textSize="18dp" />
 
         <Button
             android:id="@+id/btnUpdateOptions"
-            android:layout_width="wrap_content"
+            android:layout_width="20dp"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
-            android:layout_marginEnd="10dp"
-            android:layout_marginRight="10dp"
             android:background="@android:color/transparent"
             android:gravity="center"
             android:text="&#8942;"
-            android:visibility="invisible"
+            android:layout_marginEnd="10dp"
             android:textAppearance="?android:textAppearanceLarge" />
 
     </RelativeLayout>
