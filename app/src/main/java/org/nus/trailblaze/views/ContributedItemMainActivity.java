@@ -10,24 +10,37 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import org.nus.trailblaze.R;
 import org.nus.trailblaze.fragments.FeedFragment;
 import org.nus.trailblaze.models.ContributedItem;
 
-public class ContributedItemMainActivity  extends AppCompatActivity
-        implements FeedFragment.OnPassItem{
+import java.util.HashMap;
+import java.util.Map;
+
+
+public class ContributedItemMainActivity  extends AppCompatActivity implements FeedFragment.OnPassItem{
 
     //Declaring Fragments
     private FeedFragment feedFragment;
 
     private Toolbar itemToolbar;
     private FirebaseAuth firebaseAuth;
+    private FirebaseFirestore firebaseFirestore;
     private  String stationId;
     private  String trailId;
 
@@ -40,6 +53,7 @@ public class ContributedItemMainActivity  extends AppCompatActivity
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
         firebaseAuth = FirebaseAuth.getInstance();
+        firebaseFirestore = FirebaseFirestore.getInstance();
 
         //Account Settings Toolbar
         Toolbar itemToolbar = findViewById(R.id.itemToolbar);
@@ -124,9 +138,30 @@ public class ContributedItemMainActivity  extends AppCompatActivity
     }
 
     public void goToThreadListener(View view){
-        Intent threadIntent = new Intent(ContributedItemMainActivity.this,DiscussionThreadActivity.class);
-        startActivity(threadIntent);
-        finish();
+        final String stationID = getIntent().getStringExtra("stationID");
+        Map<String, Object> threadMap = new HashMap<>();
+        threadMap.put("id", stationID + "_thread");
+        threadMap.put("stationID",stationID);
+        if(!TextUtils.isEmpty(stationID)){
+            //Search if any thead exists with station ID
+            firebaseFirestore.collection("discussion_threads").document(stationID + "_thread").addSnapshotListener(new EventListener<DocumentSnapshot>() {
+                @Override
+                public void onEvent(DocumentSnapshot documentSnapshot, FirebaseFirestoreException e) {
+                    Intent threadIntent = new Intent(ContributedItemMainActivity.this,DiscussionThreadActivity.class);
+                    threadIntent.putExtra("stationID",stationID);
+                    threadIntent.putExtra("threadID",stationID + "_thread");
+                    startActivity(threadIntent);
+                }
+            });
+        }else{
+            Log.i("STATION ID","No stationID");
+        }
+
     }
+
+    public void showToastMessage(String message){
+        Toast.makeText(ContributedItemMainActivity.this,message,Toast.LENGTH_LONG).show();
+    }
+
 
 }
