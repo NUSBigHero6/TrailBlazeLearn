@@ -35,9 +35,12 @@ import org.nus.trailblaze.adapters.FileHelper;
 import org.nus.trailblaze.adapters.IntentHelper;
 import org.nus.trailblaze.dao.ContributedItemDao;
 import org.nus.trailblaze.models.ContributedItem;
+import org.nus.trailblaze.models.Location;
 import org.nus.trailblaze.models.Participant;
 import org.nus.trailblaze.models.Photo;
 import org.nus.trailblaze.models.TextDocument;
+import org.nus.trailblaze.models.TrailStation;
+import org.nus.trailblaze.models.User;
 
 import java.io.IOException;
 import java.util.Date;
@@ -49,8 +52,11 @@ public class ContributedItemImageActivity extends AppCompatActivity {
     private ImageView imageView;
     private  EditText editText_Desc;
     private Uri filePath;
-    Participant p= new Participant("PT1","Participant (Green)","Green@test.com");
-    Photo po= new Photo("Photo1","My Photo","",1.0f,new Date(),"" );
+    //Participant p= new Participant("PT1","Participant (Green)","Green@test.com");
+    private User user;
+    Photo po= new Photo(UUID.randomUUID().toString(),"My Photo","",1.0f,new Date(),"" );
+    String trailStationId;
+    String learningTailId;
     ContributedItem ci;
     private final int PICK_IMAGE_REQUEST = 71;
     @Override
@@ -64,11 +70,15 @@ public class ContributedItemImageActivity extends AppCompatActivity {
          imageView = (ImageView) findViewById(R.id.imgView);
          editText_Desc=(EditText)findViewById(R.id.editText_Desc);
 
+        Intent intent = getIntent();
+        learningTailId = intent.getStringExtra("trailID");
+        trailStationId = intent.getStringExtra("stationID");
+        user=(User)intent.getSerializableExtra("user");
         btnChoose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 chooseImage();
-                ci= new ContributedItem("ContributedItem_3",p,new Date(),po,editText_Desc.getText().toString());
+                ci= new ContributedItem(UUID.randomUUID().toString(),user,new Date(),po,editText_Desc.getText().toString(),trailStationId,learningTailId);
             }
         });
         btnSave.setOnClickListener(new View.OnClickListener() {
@@ -76,8 +86,8 @@ public class ContributedItemImageActivity extends AppCompatActivity {
             public void onClick(View v) {
                 ContributedItemDao ciDao= new ContributedItemDao(ContributedItemImageActivity.this,ci);
                 ciDao.SaveContributedItem(filePath,"image");
-                //Return trail station page
-                //startActivity(new Intent(getApplicationContext(), TrailStationActivity.class));
+
+
             }
         });
     }

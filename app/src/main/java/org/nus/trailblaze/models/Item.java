@@ -13,6 +13,8 @@ public class Item implements Parcelable {
     private User user;
     private Date createdDate;
     private File file;
+    protected String trailStationId;
+    protected String learningTrailId;
 
     public Item(){}
     public Item(String id, User user)
@@ -27,6 +29,23 @@ public class Item implements Parcelable {
         this.createdDate = createdDate;
         this.file = file;
     }
+    public  String GetTrailStationId()
+    {
+        return  this.trailStationId;
+    }
+    public  void  SetTrailStationId(String trailStationId)
+    {
+        this.trailStationId=trailStationId;
+    }
+    public  String GetLearingTrailId()
+    {
+        return  this.learningTrailId;
+    }
+    public  void  SetLearingTrailId(String learningTrailId)
+    {
+        this.learningTrailId=learningTrailId;
+    }
+
 
     public String getId() {
         return id;

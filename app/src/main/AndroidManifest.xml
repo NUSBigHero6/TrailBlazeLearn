@@ -16,6 +16,7 @@
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />
+
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
@@ -45,16 +46,20 @@
         </activity>
         <activity android:name=".views.SetLearningTrailActivity" />
         <activity android:name=".views.ParticipantJoin" />
-        <activity android:name=".views.LearningTrailMainActivity"></activity>
+        <activity android:name=".views.LearningTrailMainActivity" >
+        </activity>
+
+        <activity android:name=".views.TrailBlazaFeedActivity" />
         <activity
             android:name=".views.RoleToggler"
             android:label="@string/title_activity_role_toggler" />
         <activity android:name=".views.AudioPlayerActivity" />
-        <activity android:name=".views.ContributedItemImageActivity" />
-        <activity android:name=".views.ContributedItemDocActivity" />
-        <activity android:name=".views.ContributedItemMediaActivity" />
+        <activity android:name=".views.ContributedItemImageActivity"></activity>
+        <activity android:name=".views.ContributedItemDocActivity"></activity>
+        <activity android:name=".views.ContributedItemMediaActivity"></activity>
+
         <activity android:name=".views.TrailBlazeItemViewerActivity" />
-        <activity android:name=".views.TrailBlazaFeedActivity" />
+
         <activity android:name=".views.TrailStationMainActivity" />
         <activity android:name=".views.SetTrailStationActivity"/>
         <activity android:name=".views.DiscussionThreadActivity" />

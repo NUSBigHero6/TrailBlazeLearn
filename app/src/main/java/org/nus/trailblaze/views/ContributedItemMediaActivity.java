@@ -35,10 +35,14 @@ import org.nus.trailblaze.adapters.IntentHelper;
 import org.nus.trailblaze.dao.ContributedItemDao;
 import org.nus.trailblaze.models.Audio;
 import org.nus.trailblaze.models.ContributedItem;
+import org.nus.trailblaze.models.Location;
 import org.nus.trailblaze.models.Participant;
 import org.nus.trailblaze.models.TextDocument;
+import org.nus.trailblaze.models.TrailStation;
+import org.nus.trailblaze.models.User;
 
 import java.util.Date;
+import java.util.UUID;
 
 public class ContributedItemMediaActivity extends AppCompatActivity {
     private Button btnUploadAudio;
@@ -48,8 +52,11 @@ public class ContributedItemMediaActivity extends AppCompatActivity {
     private EditText editText_Desc;
     private TextView textView_Comment;
 
-    Participant p= new Participant("PT1","Participant (Green)","Green@test.com");
-    Audio ao= new Audio("Audio1","My Audio","",1.0f,new Date(),"P" );
+    //Participant p= new Participant("PT1","Participant (Green)","Green@test.com");
+    private User user;
+    Audio ao= new Audio(UUID.randomUUID().toString(),"My Audio","",1.0f,new Date(),"P" );
+    String trailStationId;
+    String learningTailId;
     ContributedItem ci;
 
     @Override
@@ -63,11 +70,16 @@ public class ContributedItemMediaActivity extends AppCompatActivity {
         btnUploadAudio = (Button) findViewById(R.id.btnUploadAudio);
         editText_Desc=(EditText)findViewById(R.id.editText_Desc);
         textView_Comment=(TextView)findViewById(R.id.textView_Comment);
+
+        Intent intent = getIntent();
+        learningTailId = intent.getStringExtra("trailID");
+        trailStationId = intent.getStringExtra("stationID");
+        user=(User)intent.getSerializableExtra("user");
         btnChooseAudio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 chooseFile();
-                ci= new ContributedItem("ContributedItem_5",p,new Date(),ao,editText_Desc.getText().toString());
+                ci= new ContributedItem(UUID.randomUUID().toString(),user,new Date(),ao,editText_Desc.getText().toString(),trailStationId,learningTailId);
             }
         });
 
@@ -76,8 +88,7 @@ public class ContributedItemMediaActivity extends AppCompatActivity {
             public void onClick(View v) {
                 ContributedItemDao ciDao= new ContributedItemDao(ContributedItemMediaActivity.this,ci);
                 ciDao.SaveContributedItem(filePath,"audio");
-                //Return trail station page
-                //startActivity(new Intent(getApplicationContext(), TrailStationActivity.class));
+
             }
         });
     }
