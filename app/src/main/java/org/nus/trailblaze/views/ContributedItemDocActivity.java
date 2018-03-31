@@ -81,6 +81,7 @@ public class ContributedItemDocActivity extends AppCompatActivity  {
         btnUpload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                ci.setDescription(ContributedItemDocActivity.this.editText_Description.getText().toString());
                 ContributedItemDao ciDao= new ContributedItemDao(ContributedItemDocActivity.this,ci);
                 ciDao.SaveContributedItem(filePath,"document");
                 //Return trail station page

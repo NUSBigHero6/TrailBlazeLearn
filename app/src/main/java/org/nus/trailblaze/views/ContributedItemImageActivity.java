@@ -84,6 +84,7 @@ public class ContributedItemImageActivity extends AppCompatActivity {
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                ci.setDescription(ContributedItemImageActivity.this.editText_Desc.getText().toString());
                 ContributedItemDao ciDao= new ContributedItemDao(ContributedItemImageActivity.this,ci);
                 ciDao.SaveContributedItem(filePath,"image");
 
