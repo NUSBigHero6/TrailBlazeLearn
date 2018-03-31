@@ -149,8 +149,8 @@ public class TrailBlazeItemViewerActivity extends AppCompatActivity {
         StorageReference storageRef = storage.getReferenceFromUrl("gs://trailblaze-0007.appspot.com")
                                             .child("document/" + fileName);
 
-        final long ONE_MEGABYTE = 1024 * 1024;
-        storageRef.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
+        final long FIVE_MEGABYTE = 1024 * 1024 * 5;
+        storageRef.getBytes(FIVE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
             @Override
             public void onSuccess(byte[] bytes) {
                 // Data for "images/island.jpg" is returns, use this as needed
