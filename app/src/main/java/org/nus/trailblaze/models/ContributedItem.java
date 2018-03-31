@@ -14,7 +14,6 @@ import java.util.List;
 
 public class ContributedItem extends Item {
     private String description;
-    private String learningTrailId;
 
     public ContributedItem() {}
 
