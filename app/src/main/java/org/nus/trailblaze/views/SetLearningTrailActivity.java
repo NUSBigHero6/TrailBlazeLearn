@@ -61,11 +61,7 @@ public class SetLearningTrailActivity extends AppCompatActivity implements View.
         documentID = bundle.getString(DOCUMENTID);
 
         Date date = new Date();
-        String day          = (String) DateFormat.format("dd", date);
-        String monthNumber  = (String) DateFormat.format("MM", date);
-        String year         = (String) DateFormat.format("yy", date);
-
-        ymd = year + monthNumber + day;
+        ymd = (String) DateFormat.format("yyMMdd", date);
         titlecode.setText(ymd);
 
         if (nameValue != null) {

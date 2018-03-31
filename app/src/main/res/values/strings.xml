@@ -5,6 +5,7 @@
     <string name="title_activity_role_toggler">RoleToggler</string>
     <string name="add_learning_trail">Add Learning Trail</string>
     <string name="no_trail_result">No trail record yet.</string>
+    <string name="no_item_result">No contributed item yet.</string>
     <string name="title_activity_contributed_item_main">ContributedItemMainActivity</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>

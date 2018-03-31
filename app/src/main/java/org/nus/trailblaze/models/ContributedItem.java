@@ -14,6 +14,7 @@ import java.util.List;
 
 public class ContributedItem extends Item {
     private String description;
+    private String learningTrailId;
 
     public ContributedItem() {}
 
@@ -35,11 +36,20 @@ public class ContributedItem extends Item {
         this.description = description;
     }
 
+    public String getLearningTrailId() {
+        return learningTrailId;
+    }
+
+    public void setLearningTrailId(String learningTrailId) {
+        this.learningTrailId = learningTrailId;
+    }
+
     // Storing the Movie data to Parcel object
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(getId());
         dest.writeString(getDescription());
+        dest.writeString(getLearningTrailId());
         dest.writeParcelable(getFile(), flags);
     }
 
@@ -51,6 +61,7 @@ public class ContributedItem extends Item {
     private ContributedItem(Parcel in){
         this.setId(in.readString());
         this.setDescription(in.readString());
+        this.setLearningTrailId(in.readString());
         this.setFile((File)in.readParcelable(File.class.getClassLoader()));
     }
 

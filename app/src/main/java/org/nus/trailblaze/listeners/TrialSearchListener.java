@@ -43,7 +43,7 @@ public class TrialSearchListener implements OnCompleteListener<QuerySnapshot> {
             if(!result.isEmpty()){
                 Intent intent = new Intent(this.activity, this.nextActivity);
                 intent.putExtra("userMode", "participant");
-                intent.putExtra("participant", Participant.fromUser(this.user));
+                intent.putExtra("user", Participant.fromUser(this.user));
                 intent.putExtra("trailID", this.trailID);
                 // lines are needed for back navigation.
                 this.activity.searchBtn.setEnabled(true);

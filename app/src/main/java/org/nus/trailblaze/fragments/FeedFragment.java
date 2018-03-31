@@ -10,6 +10,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
@@ -30,6 +32,11 @@ public class FeedFragment extends Fragment
     private FirebaseFirestore firestoreDB;
     private OnPassItem mPassItem;
 
+    private ProgressBar progressBar;
+    private TextView noResultTextView;
+    private String filterId;
+    private String userModeText;
+
     public interface OnPassItem{
         public void passItem(ContributedItem item);
     }
@@ -37,15 +44,20 @@ public class FeedFragment extends Fragment
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        filterId = getArguments().getString("id");
+        userModeText = getArguments().getString("userMode");
+
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_feed, container, false);
-
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        Log.d("Test", "onViewCreated");
+
         mRecyclerView = (RecyclerView) getView().findViewById(R.id.tb_feed_view);
+        progressBar = (ProgressBar) getView().findViewById(R.id.progress_bar);
+        noResultTextView = (TextView) getView().findViewById(R.id.tv_noResult);
 
         // use this setting to improve performance if you know that changes
         // in content do not change the layout size of the RecyclerView
@@ -57,18 +69,31 @@ public class FeedFragment extends Fragment
 
         firestoreDB = FirebaseFirestore.getInstance();
 
-        loadItemsList("TrailStationId1");
+        loadItemsList();
     }
 
-    private void loadItemsList(String trailStationId) {
+    private void loadItemsList() {
 
-        Query query = firestoreDB.collection("contributed_items").whereEqualTo("trailStationId", trailStationId);
+        String filterIdField = "trailStationId";
 
-        FirestoreRecyclerOptions<ContributedItem> response = new FirestoreRecyclerOptions.Builder<ContributedItem>()
+        if(userModeText.equals("trainer"))
+            filterIdField = "learningTrailId";
+
+        Log.d("filterIdField", filterIdField + " " + String.valueOf(userModeText == "trainer") + " " + filterId);
+        Query query =  firestoreDB.collection("contributed_items")
+                                    .whereEqualTo(filterIdField, filterId);
+
+        final FirestoreRecyclerOptions<ContributedItem> response = new FirestoreRecyclerOptions.Builder<ContributedItem>()
                 .setQuery(query, ContributedItem.class)
                 .build();
 
-        adapter = new FeedFirestoreAdapter(response, this);
+        adapter = new FeedFirestoreAdapter(response, this) {
+            @Override
+            public void onDataChanged() {
+                progressBar.setVisibility(View.GONE);
+                noResultTextView.setVisibility((response.getSnapshots().size() == 0 ? View.VISIBLE : View.GONE));
+            }
+        };
 
         adapter.notifyDataSetChanged();
         mRecyclerView.setAdapter(adapter);
