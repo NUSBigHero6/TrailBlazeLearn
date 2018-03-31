@@ -62,8 +62,12 @@ public class ContributedItemMainActivity  extends AppCompatActivity implements F
 
         stationId = this.getIntent().getStringExtra("stationID");
         trailId= getIntent().getStringExtra("trailID");
+        String userMode = getIntent().getStringExtra("userMode");
 
-        Log.d("SENDING/TRIAL", stationId);
+        if(userMode.equals("trainer")){
+            navigation.setVisibility(View.GONE);
+        }
+
         //Initializing Fragments
         feedFragment = new FeedFragment();
         Bundle bundle = new Bundle();
