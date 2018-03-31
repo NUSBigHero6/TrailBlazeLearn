@@ -86,6 +86,7 @@ public class ContributedItemMediaActivity extends AppCompatActivity {
         btnUploadAudio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                ci.setDescription(ContributedItemMediaActivity.this.editText_Desc.getText().toString());
                 ContributedItemDao ciDao= new ContributedItemDao(ContributedItemMediaActivity.this,ci);
                 ciDao.SaveContributedItem(filePath,"audio");
 
