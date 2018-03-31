@@ -60,6 +60,10 @@ public class TrailStationDao {
         return this.ref.document(documentID).delete();
     }
 
+    public Task<Void> createNewStation(TrailStation station){
+        return this.ref.document(station.getId()).set(station);
+    }
+
 
     public Task<QuerySnapshot> getStationById(String stnid){
         return  this.ref.whereEqualTo("id", stnid).get();
