@@ -12,12 +12,19 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.TextView;
+import android.view.View;
 
 import com.google.firebase.auth.FirebaseAuth;
 
 import org.nus.trailblaze.R;
 import org.nus.trailblaze.fragments.FeedFragment;
 import org.nus.trailblaze.models.ContributedItem;
+import org.nus.trailblaze.models.User;
+
+import java.util.Date;
 
 public class ContributedItemMainActivity  extends FragmentActivity
         implements FeedFragment.OnPassItem{
@@ -27,6 +34,9 @@ public class ContributedItemMainActivity  extends FragmentActivity
 
     private Toolbar itemToolbar;
     private FirebaseAuth firebaseAuth;
+    private User user;
+    private String trailStationId;
+    private  String learningTailId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,11 +47,13 @@ public class ContributedItemMainActivity  extends FragmentActivity
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
         firebaseAuth = FirebaseAuth.getInstance();
-
+        user=(User)getIntent().getSerializableExtra("user");
         //Account Settings Toolbar
         Toolbar itemToolbar = findViewById(R.id.itemToolbar);
         itemToolbar.setTitle("Contributed Item");
-
+        Intent intent = getIntent();
+        learningTailId = intent.getStringExtra("trailID");
+        trailStationId = intent.getStringExtra("stationID");
         //Initializing Fragments
         feedFragment = new FeedFragment();
         Bundle bundle = new Bundle();
@@ -50,7 +62,6 @@ public class ContributedItemMainActivity  extends FragmentActivity
         feedFragment.setArguments(bundle);
 
         replaceFragment(feedFragment);
-
     }
     //Handle Bottom navigation menu clicks
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -60,13 +71,25 @@ public class ContributedItemMainActivity  extends FragmentActivity
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.menu_docs:
-
+                    Intent dIntent=new Intent(getApplicationContext(),ContributedItemDocActivity.class);
+                    dIntent.putExtra("trailID", trailStationId);
+                    dIntent.putExtra("stationID", learningTailId);
+                    dIntent.putExtra("user",user);
+                    startActivity(dIntent);
                     return true;
                 case R.id.menu_photos:
-
+                    Intent pIntent=new Intent(getApplicationContext(),ContributedItemDocActivity.class);
+                    pIntent.putExtra("trailID", trailStationId);
+                    pIntent.putExtra("stationID", learningTailId);
+                    pIntent.putExtra("user",user);
+                    startActivity(pIntent);
                     return true;
                 case R.id.menu_audio:
-
+                    Intent aIntent=new Intent(getApplicationContext(),ContributedItemDocActivity.class);
+                    aIntent.putExtra("trailID", trailStationId);
+                    aIntent.putExtra("stationID", learningTailId);
+                    aIntent.putExtra("user",user);
+                    startActivity(aIntent);
                     return true;
             }
             return false;

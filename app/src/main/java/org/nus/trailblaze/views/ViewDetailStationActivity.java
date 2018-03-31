@@ -20,6 +20,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 import org.nus.trailblaze.R;
 import org.nus.trailblaze.dao.TrailStationDao;
 import org.nus.trailblaze.listeners.ListItemClickListener;
+import org.nus.trailblaze.models.User;
 
 /**
  * Created by AswathyLeelakumari on 30/3/2018.
@@ -41,7 +42,8 @@ public class ViewDetailStationActivity extends AppCompatActivity implements List
     private String stnId;
     private String locName;
     private String instrn;
-
+    private  Button btnContribuItem;
+    private User user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +52,7 @@ public class ViewDetailStationActivity extends AppCompatActivity implements List
         stnLocation = (TextView) findViewById(R.id.stn_location);
         stnInstrn = (TextView) findViewById(R.id.stn_instrn);
         btnDiscThread = findViewById(R.id.btnGotoDiscThread);
+        user=(User)getIntent().getSerializableExtra("user");
 
         btnDiscThread.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,6 +73,20 @@ public class ViewDetailStationActivity extends AppCompatActivity implements List
 
         stnLocation.setText(locName);
         stnInstrn.setText(instrn);
+
+        btnContribuItem=(Button)findViewById(R.id.btnGotoContributedItem);
+        btnContribuItem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent cIntent = new Intent(ViewDetailStationActivity.this, ContributedItemMainActivity.class);
+                cIntent.putExtra("trailID", trailId);
+                cIntent.putExtra("stationID", stnId);
+                //newStnIntent.putExtra("trainer", Trainer.fromUser(TrailStationMainActivity.this.trainer));
+                cIntent.putExtra("user",user);
+                startActivity(cIntent);
+            }
+        });
+
 
         Toolbar viewToolbar = (Toolbar) findViewById(R.id.viewToolbar);
         viewToolbar.setTitle(stnHeader);

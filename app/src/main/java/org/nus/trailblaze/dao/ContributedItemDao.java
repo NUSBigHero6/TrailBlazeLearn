@@ -2,6 +2,7 @@ package org.nus.trailblaze.dao;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.widget.Toast;
@@ -52,6 +53,7 @@ public class ContributedItemDao {
                             db.collection("contributed_items").document(ci.getId()).set(ci);
                             progressDialog.dismiss();
                             Toast.makeText(current, "Saved Successfully", Toast.LENGTH_SHORT).show();
+
                         }
                     })
                     .addOnFailureListener(new OnFailureListener() {
